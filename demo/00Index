@@ -1,0 +1,22 @@
+measures                                          R code for scoring features sets using a variety of measures
+measures_and_search                               R code for combination of many consistency measures and search algorythms
+wrapper                                           R code for combination of wrapper measure and search algorythms
+wrapperGenerator                                  Extended example on how to use wrapperGenerator() function
+sfs                                               Extended example on how to use sfs() function
+sbs                                               Extended example on how to use sbs() function
+sffs                                              Extended example on how to use sffs() function
+sfbs                                              Extended example on how to use sfbs() function
+selectKBest                                       Extended example on how to use selectKBest() function
+selectPercentile                                  Extended example on how to use selectPercentile() function
+selectThreshold                                   Extended example on how to use selectThreshold() function
+lvw                                               Extended example on how to use lvw() function
+ga                                                Extended example on how to use ga() function
+sa                                                Extended example on how to use sa() function
+woa                                               Extended example on how to use woa() function
+aco                                               Extended example on how to use aco() function
+hc                                                Extended example on how to use hc() function
+ts                                                Extended example on how to use ts() function
+LCC                                               Extended example on how to use LCC() function
+breadthFirstSearch                                Extended example on how to use breadthFirstSearch() function
+deepFirstSearch                                   Extended example on how to use deepFirstSearch() function
+
