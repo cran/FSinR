@@ -4,8 +4,14 @@
 \alias{lvw}
 \title{Las Vegas Wrapper}
 \usage{
-lvw(data, class, featureSetEval, start = sample(0:1, ncol(data) - 1,
-  replace = TRUE), K = 50, verbose = FALSE)
+lvw(
+  data,
+  class,
+  featureSetEval,
+  start = sample(0:1, ncol(data) - 1, replace = TRUE),
+  K = 50,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{data}{\itemize{

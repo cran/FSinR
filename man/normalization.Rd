@@ -23,6 +23,9 @@ normalization(data, class)
 \description{
 Takes in any data frame and normalize the data of their features
 }
+\details{
+Normalize the data (without the class)
+}
 \examples{
 normalization(iris,'Species')
 }

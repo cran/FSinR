@@ -8,6 +8,7 @@
 #' @return - MDLC value for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @import digest
 #' @importFrom stats cov
 #' @export
@@ -63,6 +64,7 @@ MDLC <- function(data, class, features) {
   }
   return(as.numeric(s + hk))
 }
+attr(MDLC,'shortName') <- "MDLC"
 attr(MDLC,'name') <- "MDLC"
 attr(MDLC,'maximize') <- TRUE
 attr(MDLC,'kind') <- "Set measure"

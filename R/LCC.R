@@ -26,6 +26,7 @@ orderFeatures <- function(data, class, features, measure) {
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -67,4 +68,5 @@ LCC <- function(data, class, featureSetEval, featureEval=symmetricalUncertain, t
   
   res
 }
+attr(LCC,'shortName') <- "LCC"
 attr(LCC,'name') <- "Linear Consistency-Constrained"

@@ -22,6 +22,7 @@ capture.output(library(GA))
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #' @import GA
 #' @importFrom utils capture.output
@@ -111,6 +112,7 @@ ga <- function(data, class, featureSetEval, popSize=20, pcrossover = 0.8, pmutat
   res
 }
 
+attr(ga,'shortName') <- "ga"
 attr(ga,'name') <- "Genetic Algorithm"
 
 
@@ -138,6 +140,7 @@ attr(ga,'name') <- "Genetic Algorithm"
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #'
 #' @importFrom stats runif
 #' @export
@@ -324,6 +327,7 @@ sa <- function(data, class, featureSetEval, start=sample(0:1,ncol(data)-1,replac
   res
 }
 
+attr(sa,'shortName') <- "sa"
 attr(sa,'name') <- "Simmulated Annealing"
 
 #' @author Francisco Aragón Royón
@@ -344,6 +348,7 @@ attr(sa,'name') <- "Simmulated Annealing"
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -540,6 +545,7 @@ woa <- function(data, class, featureSetEval, population=10, iter=10, verbose = F
   
   res
 }
+attr(woa,'shortName') <- "woa"
 attr(woa,'name') <- "Whale Optimization Algorithm"
 
 #' @author Francisco Aragón Royón
@@ -569,6 +575,7 @@ attr(woa,'name') <- "Whale Optimization Algorithm"
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @importFrom stats cor.test
 #' @export
 #'
@@ -1119,4 +1126,5 @@ aco <- function(data, class, featureSetEval, population=10, iter=10, a=1, b=1, p
   return(res)
 }
 
+attr(aco,'shortName') <- "aco"
 attr(aco,'name') <- "Ant Colony Optimization"

@@ -12,4 +12,5 @@ test_that("Results are correct", {
 
 test_that("Name is set", {
   expect_equal(attr(selectDifference,'name'),"Select Difference");
+  expect_equal(attr(selectDifference,'shortName'),"selectDifference");
 })

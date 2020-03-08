@@ -4,8 +4,7 @@
 \alias{woa}
 \title{Whale Optimization Algorithm (Binary Whale Optimization Algorithm)}
 \usage{
-woa(data, class, featureSetEval, population = 10, iter = 10,
-  verbose = FALSE)
+woa(data, class, featureSetEval, population = 10, iter = 10, verbose = FALSE)
 }
 \arguments{
 \item{data}{\itemize{

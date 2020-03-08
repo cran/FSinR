@@ -13,6 +13,7 @@
 #'
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @return - a data.frame containing the worth of attributes in the first column and their names as row names
 #' @importFrom stats as.formula
 #' @export
@@ -345,6 +346,7 @@ normalize.min.max <- function(data) {
   
   return(data)
 }
+attr(relief,'shortName') <- "relief"
 attr(relief,'name') <- "Relief"
 attr(relief,'maximize') <- TRUE
 attr(relief,'kind') <- "Individual measure"

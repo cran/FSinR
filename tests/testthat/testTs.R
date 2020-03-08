@@ -8,4 +8,5 @@ test_that("Tabu search works", {
 
 test_that("Name is set", {
   expect_equal(attr(ts,'name'),"Tabu Search");
+  expect_equal(attr(ts,'shortName'),"ts");
 })

@@ -4,9 +4,17 @@
 \alias{sa}
 \title{Simulated Annealing}
 \usage{
-sa(data, class, featureSetEval, start = sample(0:1, ncol(data) - 1,
-  replace = TRUE), temperature = 1, temperature_min = 0.01,
-  reduction = 0.6, innerIter = 1, verbose = FALSE)
+sa(
+  data,
+  class,
+  featureSetEval,
+  start = sample(0:1, ncol(data) - 1, replace = TRUE),
+  temperature = 1,
+  temperature_min = 0.01,
+  reduction = 0.6,
+  innerIter = 1,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{data}{\itemize{

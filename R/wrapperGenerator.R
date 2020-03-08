@@ -1,5 +1,4 @@
 library(caret)
-
 #' generaWrapper
 #'
 #' @author Alfonso Jiménez-Vílchez
@@ -13,6 +12,7 @@ library(caret)
 #' @return Returns a wrapper function that is used to generate an evaluation measure
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #' @import caret
 #' @import e1071
@@ -69,6 +69,7 @@ wrapperGenerator <- function(learner, resamplingParams, fittingParams) {
   
   # Added as an attribute
   attr(wrapper,'maximize') <- max
+  attr(wrapper,'shortName') <- paste(learner, "wrapper")
   attr(wrapper,'name') <- paste(learner, " Wrapper")
   attr(wrapper,'kind') <- "Set measure"
   

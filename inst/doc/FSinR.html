@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Francisco Aragón Royón" />
 
-<meta name="date" content="2019-12-18" />
+<meta name="date" content="2020-03-08" />
 
 <title>A Short Introduction to the FSinR Package</title>
 
@@ -120,9 +119,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -291,7 +287,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -306,7 +303,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">A Short Introduction to the FSinR Package</h1>
 <h4 class="author">Francisco Aragón Royón</h4>
-<h4 class="date">2019-12-18</h4>
+<h4 class="date">2020-03-08</h4>
 
 
 
@@ -367,9 +364,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>The search algorithm call returns a list of the most important results and the most important details of the process.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>result.search.fs<span class="op">$</span>bestFeatures</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;      Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; [1,]            1           1            1           1</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; [1,]            0           1            1           1</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a>result.search.fs<span class="op">$</span>bestFitness</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt; [1] 0.9666667</span></span></code></pre></div>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt; [1] 0.9733333</span></span></code></pre></div>
 <p>In the example, the output only shows the best subset of features chosen in the feature selection process and the accuracy measurement obtained. In this particular case, the taboo search result also returns the status of the taboo list in each iteration, as well as the subset of features chosen in each iteration. Although in this example is not shown to be extensive.</p>
 <p>The wrapper method generated above can also be used directly, without being inside a search algorithm. To do this, the data set, the name of the variable to be predicted, and a vector with the names of the features to be taken into account are passed to the method as parameters.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>wrapperMeasure &lt;-<span class="st"> </span><span class="kw">wrapper</span>(iris,<span class="st">&quot;Species&quot;</span>,<span class="kw">c</span>(<span class="st">&quot;Sepal.Length&quot;</span>, <span class="st">&quot;Sepal.Width&quot;</span>, <span class="st">&quot;Petal.Length&quot;</span>, <span class="st">&quot;Petal.Width&quot;</span>))</span>

@@ -13,4 +13,5 @@ test_that("Results are correct", {
 
 test_that("Name is set", {
   expect_equal(attr(selectKBest,'name'),"Select K Best");
+  expect_equal(attr(selectKBest,'shortName'),"selectKBest");
 })

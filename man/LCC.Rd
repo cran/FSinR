@@ -4,8 +4,13 @@
 \alias{LCC}
 \title{Linear Consistency-Constrained algorithm}
 \usage{
-LCC(data, class, featureSetEval, featureEval = symmetricalUncertain,
-  threshold = 0.9)
+LCC(
+  data,
+  class,
+  featureSetEval,
+  featureEval = symmetricalUncertain,
+  threshold = 0.9
+)
 }
 \arguments{
 \item{data}{\itemize{

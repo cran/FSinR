@@ -10,4 +10,5 @@ test_that("SelectThreshold works", {
 
 test_that("Name is set", {
   expect_equal(attr(selectThreshold,'name'),"Select Threshold");
+  expect_equal(attr(selectThreshold,'shortName'),"selectThreshold");
 })

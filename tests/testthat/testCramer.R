@@ -13,4 +13,5 @@ test_that("Results are correct", {
 
 test_that("It has correct name", {
   expect_equal(attr(cramer, 'name'),"Cramer")
+  expect_equal(attr(cramer, 'shortName'),"cramer")
 })

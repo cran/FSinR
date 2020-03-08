@@ -1,16 +1,16 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
 collapse = TRUE,
 comment = "#>"
 )
 
-## ---- 'Simple'-----------------------------------------------------------
+## ---- 'Simple'----------------------------------------------------------------
 library(FSinR)
 
 sfs(iris, 'Species', IEConsistency)
 sfs(iris, 'Species', mutualInformation)
 
-## ---- 'List of measures'-------------------------------------------------
+## ---- 'List of measures'------------------------------------------------------
 measures <- list(IEConsistency, mutualInformation)
 for (measure in measures) {
   result <- sfs(iris, 'Species', measure)
@@ -18,7 +18,7 @@ for (measure in measures) {
   print(result$bestFeatures)
 }
 
-## ---- 'List of algorithms'-----------------------------------------------
+## ---- 'List of algorithms'----------------------------------------------------
 measures <- list(IEConsistency, mutualInformation)
 algorithms <- list(sfs, lvw)
 for (algorithm in algorithms) {
@@ -30,7 +30,7 @@ for (algorithm in algorithms) {
   }
 }
 
-## ---- 'Add wrapper'------------------------------------------------------
+## ---- 'Add wrapper'-----------------------------------------------------------
 resamplingParams <- list(method = "cv", number = 10)
 fittingParams <- list(preProc = c("center", "scale"), metric = "Accuracy", tuneGrid = expand.grid(k = c(1:20)))
 

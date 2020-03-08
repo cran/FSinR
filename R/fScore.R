@@ -8,6 +8,7 @@
 #' @return - The value of the function for the selected feature
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @import dplyr
 #' @export
 #'
@@ -25,7 +26,7 @@ fscore <- function(data, class, features) {
   }
 
   
-  measures <- NULL  
+  measures <- c()  
   for (feature in features) {
     x.mean = mean(data[,feature])
   
@@ -54,14 +55,15 @@ fscore <- function(data, class, features) {
       x_minus.sum = x_minus.sum + (x - x_minus.mean)^2
     }
     x_minus.sum = x_minus.sum / (x_minus.n - 1)
-    measures[[length(measures) + 1]] <- ((x_plus.mean - x.mean)^2 + (x_minus.mean - x.mean)^2) / (x_plus.sum + x_minus.sum)
+    measures[length(measures) + 1] <- ((x_plus.mean - x.mean)^2 + (x_minus.mean - x.mean)^2) / (x_plus.sum + x_minus.sum)
   }
   if (length(features) == 1) {
-    return(measures[[1]])
+    return(measures[1])
   }
   names(measures) <- features
   return(measures)
 }
+attr(fscore,'shortName') <- "fscore"
 attr(fscore,'name') <- "F-score"
 attr(fscore,'maximize') <- TRUE
 attr(fscore,'kind') <- "Individual measure"

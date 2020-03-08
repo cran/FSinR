@@ -6,7 +6,7 @@ RFSM_diffS <- function(data, S, e1, e2, penalization = FALSE) {
     } else {
       f_column <- unlist(as.data.frame(data[, feature, drop = FALSE]))
       if (is.discrete(f_column)) {
-        result <- result || RFSM_diff(data, feature, e1, e2)
+        result <- (if (is.null(result)) 0 else result) || RFSM_diff(data, feature, e1, e2)
       } else {
         if (penalization) {
           result <- min(result, RFSM_diff(data, feature, e1, e2))
@@ -68,6 +68,7 @@ selectKNeighbours <- function(data, S, examples, example, k, penalization = FALS
 #' @return - The value of the function for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #' @import tidyr
 #' @import prodlim
@@ -122,6 +123,7 @@ RFSM <- function(data, class, features, m = 5, k = 4) {
   
   return(w / m)
 }
+attr(RFSM,'shortName') <- "RFSM"
 attr(RFSM,'name') <- "RFSM"
 attr(RFSM,'maximize') <- TRUE
 attr(RFSM,'kind') <- "Set measure"

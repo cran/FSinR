@@ -1,4 +1,4 @@
-# Normalize the data (without the class)
+#' Normalize the data (without the class)
 
 #' @author Adan M. Rodriguez
 #' @title Normalize a data frame

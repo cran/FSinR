@@ -11,4 +11,5 @@ test_that("Results are correct", {
 
 test_that("Name is set", {
   expect_equal(attr(selectSlope,'name'),"Select Slope");
+  expect_equal(attr(selectSlope,'shortName'),"selectSlope");
 })

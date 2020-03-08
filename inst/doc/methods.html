@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Alfonso Jiménez Vílchez" />
 
-<meta name="date" content="2019-12-18" />
+<meta name="date" content="2020-03-08" />
 
 <title>Evaluation and algorithms combination</title>
 
@@ -120,9 +119,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -291,7 +287,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -306,7 +303,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Evaluation and algorithms combination</h1>
 <h4 class="author">Alfonso Jiménez Vílchez</h4>
-<h4 class="date">2019-12-18</h4>
+<h4 class="date">2020-03-08</h4>
 
 
 
@@ -365,7 +362,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <span id="cb3-19"><a href="#cb3-19"></a><span class="co">#&gt; [1] &quot;Algorithm:  Las Vegas Wrapper&quot;</span></span>
 <span id="cb3-20"><a href="#cb3-20"></a><span class="co">#&gt; [1] &quot;Evaluation measure:  Inconsistent Examples Consistency&quot;</span></span>
 <span id="cb3-21"><a href="#cb3-21"></a><span class="co">#&gt;      Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="co">#&gt; [1,]            1           1            1           0</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="co">#&gt; [1,]            1           1            0           1</span></span>
 <span id="cb3-23"><a href="#cb3-23"></a><span class="co">#&gt; [1] &quot;Algorithm:  Las Vegas Wrapper&quot;</span></span>
 <span id="cb3-24"><a href="#cb3-24"></a><span class="co">#&gt; [1] &quot;Evaluation measure:  Mutual Information&quot;</span></span>
 <span id="cb3-25"><a href="#cb3-25"></a><span class="co">#&gt;      Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>

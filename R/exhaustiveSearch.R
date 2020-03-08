@@ -1,5 +1,4 @@
 # Exhaustive searchs
-
 #' @author Adan M. Rodriguez
 #' @author Francisco Aragón Royón
 #' @title Exhaustive Search. Breadth First Search
@@ -15,6 +14,7 @@
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -89,6 +89,7 @@ breadthFirstSearch <- function(data, class, featureSetEval) {
   
   res
 }
+attr(breadthFirstSearch,'shortName') <- "breadthFirstSearch"
 attr(breadthFirstSearch,'name') <- "Breadth First Search"
 
 #' @author Francisco Aragón Royón
@@ -105,6 +106,7 @@ attr(breadthFirstSearch,'name') <- "Breadth First Search"
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -177,4 +179,5 @@ deepFirstSearch <- function(data, class, featureSetEval) {
   
   res
 }
+attr(deepFirstSearch,'shortName') <- "deepFirstSearch"
 attr(deepFirstSearch,'name') <- "Deep First Search"

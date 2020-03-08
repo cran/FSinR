@@ -1,5 +1,4 @@
 # Measures based on information theory
-
 #' @author Adan M. Rodriguez
 #' @author Alfonso Jiménez-Vílchez
 #' @title Entropy
@@ -56,6 +55,7 @@ entropyJ <- function(x) {
 #' @return - The mutual information value for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -93,6 +93,7 @@ mutualInformation <- function(data, class, features) {
   
   return(result)
 }
+attr(mutualInformation,'shortName') <- "mutualInformation"
 attr(mutualInformation,'name') <- "Mutual Information"
 attr(mutualInformation,'maximize') <- TRUE
 attr(mutualInformation,'kind') <- "Set measure"
@@ -107,6 +108,7 @@ attr(mutualInformation,'kind') <- "Set measure"
 #' @return - The gain ratio value for the selected features.
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -134,6 +136,7 @@ gainRatio <- function(data, class, features) {
 
   return(gain)
 }
+attr(gainRatio,'shortName') <- "gainRatio"
 attr(gainRatio,'name') <- "Gain Ratio"
 attr(gainRatio,'maximize') <- TRUE
 attr(gainRatio,'kind') <- "Set measure"
@@ -148,6 +151,7 @@ attr(gainRatio,'kind') <- "Set measure"
 #' @return - The symmetrical uncertain value for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -176,6 +180,7 @@ symmetricalUncertain <- function(data, class, features) {
 
   return(symm.uncertain)
 }
+attr(symmetricalUncertain,'shortName') <- "symmetricalUncertain"
 attr(symmetricalUncertain,'name') <- "Symmetrical Uncertain"
 attr(symmetricalUncertain,'maximize') <- TRUE
 attr(symmetricalUncertain,'kind') <- "Set measure"

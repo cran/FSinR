@@ -13,4 +13,5 @@ test_that("Results are correct", {
 
 test_that("Names are set", {
   expect_equal(attr(breadthFirstSearch,'name'),"Breadth First Search");
+  expect_equal(attr(breadthFirstSearch,'shortName'),"breadthFirstSearch");
 })

@@ -16,7 +16,7 @@ giniIndex(data, class, features)
 }}
 
 \item{features}{\itemize{
-\item The names of the selected features
+\item The names of the selected feature
 }}
 }
 \value{

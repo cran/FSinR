@@ -1,14 +1,13 @@
-
 #' @author Adan M. Rodriguez
 #' @title Gini index measure
 #' @description This measure calculates the gini index \insertCite{Ceriani2012}{FSinR} of discrete features
 #' @param data - A data frame with the features and the class of the examples
 #' @param class - The name of the dependent variable
-#' @param features - The names of the selected features
-#'
+#' @param features - The names of the selected feature
 #' @return - The Gini index value for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -46,6 +45,7 @@ giniIndex <- function(data, class, features) {
   
   return(final.gini)
 }
+attr(giniIndex,'shortName') <- "giniIndex"
 attr(giniIndex,'name') <- "Gini Index"
 attr(giniIndex,'maximize') <- TRUE
 attr(giniIndex,'kind') <- "Set measure"

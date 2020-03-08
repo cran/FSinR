@@ -10,4 +10,5 @@ test_that("Returns correct results", {
 
 test_that("Name is set", {
   expect_equal(attr(sbs,'name'),"Sequential Backward Selection");
+  expect_equal(attr(sbs,'shortName'),"sbs");
 })

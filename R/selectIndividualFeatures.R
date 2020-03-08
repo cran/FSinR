@@ -1,6 +1,4 @@
 # Cutting criteria
-
-#TODO: Reference
 #' @author Adan M. Rodriguez
 #' @author Francisco Aragón Royón
 #' @title Select K best
@@ -42,9 +40,9 @@ selectKBest <- function(data, class, featureEval, k=1) {
 
   # Evaluate each feature separately
   for (i in colnames(features)) {
-    names[[length(names) + 1]] <- i
+    names[length(names) + 1] <- i
     value <- featureEval(data, class, i)
-    values[[length(values) + 1]] <- value
+    values[length(values) + 1] <- value
   }
 
   # Create a data.frame with the values
@@ -72,6 +70,7 @@ selectKBest <- function(data, class, featureEval, k=1) {
   
   return(res)
 }
+attr(selectKBest,'shortName') <- "selectKBest"
 attr(selectKBest,'name') <- "Select K Best"
 
 #TODO: Reference
@@ -113,9 +112,9 @@ selectPercentile <- function(data, class, featureEval, percentile=10) {
   
   # Evaluate each feature separately
   for (i in colnames(features)) {
-    names[[length(names) + 1]] <- i
+    names[length(names) + 1] <- i
     value <- featureEval(data, class, i)
-    values[[length(values) + 1]] <- value
+    values[length(values) + 1] <- value
   }
   
   # Create a data.frame with the values
@@ -146,6 +145,7 @@ selectPercentile <- function(data, class, featureEval, percentile=10) {
   
   return(res)
 }
+attr(selectPercentile,'shortName') <- "selectPercentile"
 attr(selectPercentile,'name') <- "Select Percentile"
 
 #TODO: Reference
@@ -184,9 +184,9 @@ selectThreshold <- function(data, class, featureEval, threshold=0.5) {
   
   # Evaluate each feature separately
   for (i in colnames(features)) {
-    names[[length(names) + 1]] <- i
+    names[length(names) + 1] <- i
     value <- featureEval(data, class, i)
-    values[[length(values) + 1]] <- value
+    values[length(values) + 1] <- value
   }
   
   # Create a data.frame with the values
@@ -246,6 +246,7 @@ selectThreshold <- function(data, class, featureEval, threshold=0.5) {
   
   return(res)
 }
+attr(selectThreshold,'shortName') <- "selectThreshold"
 attr(selectThreshold,'name') <- "Select Threshold"
 
 #TODO: Reference
@@ -284,9 +285,9 @@ selectThresholdRange <- function(data, class, featureEval, p.threshold=0.3) {
   
   # Evaluate each feature separately
   for (i in colnames(features)) {
-    names[[length(names) + 1]] <- i
+    names[length(names) + 1] <- i
     value <- featureEval(data, class, i)
-    values[[length(values) + 1]] <- value
+    values[length(values) + 1] <- value
   }
   
   # Create a data.frame with the values
@@ -351,6 +352,7 @@ selectThresholdRange <- function(data, class, featureEval, p.threshold=0.3) {
   
   return(res)
 }
+attr(selectThresholdRange,'shortName') <- "selectThresholdRange"
 attr(selectThresholdRange,'name') <- "Select Threshold Range"
 
 #TODO: Reference
@@ -389,9 +391,9 @@ selectDifference <- function(data, class, featureEval, d.threshold=0.1) {
   
   # Evaluate each feature separately
   for (i in colnames(features)) {
-    names[[length(names) + 1]] <- i
+    names[length(names) + 1] <- i
     value <- featureEval(data, class, i)
-    values[[length(values) + 1]] <- value
+    values[length(values) + 1] <- value
   }
   
   # Create a data.frame with the values
@@ -484,6 +486,7 @@ selectDifference <- function(data, class, featureEval, d.threshold=0.1) {
   
   return(res)
 }
+attr(selectDifference,'shortName') <- "selectDifference"
 attr(selectDifference,'name') <- "Select Difference"
 
 #TODO: Reference
@@ -518,4 +521,5 @@ selectSlope <- function(data, class, featureEval, s.threshold=0.8) {
   # Select features until the slope to the next feature is over a threshold
   selectDifference(data, class, featureEval, s.threshold)
 }
+attr(selectSlope,'shortName') <- "selectSlope"
 attr(selectSlope,'name') <- "Select Slope"

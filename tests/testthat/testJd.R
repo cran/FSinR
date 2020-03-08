@@ -16,4 +16,5 @@ test_that("Returns correct results", {
 
 test_that("Name is set", {
   expect_equal(attr(Jd,'name'),"Jd");
+  expect_equal(attr(Jd,'shortName'),"Jd");
 })

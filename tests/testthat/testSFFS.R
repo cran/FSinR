@@ -10,4 +10,5 @@ test_that("Returns correct results", {
 
 test_that("Name is set", {
   expect_equal(attr(sffs,'name'),"Sequential Floating Forward Selection");
+  expect_equal(attr(sffs,'shortName'),"sffs");
 })

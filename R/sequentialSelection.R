@@ -1,5 +1,4 @@
 # Sequential Searchs
-
 #' @author Adan M. Rodriguez
 #' @author Alfonso Jiménez-Vílchez
 #' @author Francisco Aragón Royón
@@ -18,6 +17,7 @@
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -42,7 +42,7 @@ sfs <- function(data, class, featureSetEval, stopCriterion=-1, stop=FALSE) {
   max <- attr(featureSetEval,'maximize')
   
   # In feat.sub we store the features that are part of the solution
-  feat.sub <- NULL 
+  feat.sub <- c()
   if(max){ # Classification -> Maximize
     value.max <- 0
   }else{ # Regression -> Minimize
@@ -60,7 +60,7 @@ sfs <- function(data, class, featureSetEval, stopCriterion=-1, stop=FALSE) {
     # Try to include a feature in the best.feat array
 
     for (j in seq(along = features)) {
-      feat <- features[[j]] 
+      feat <- features[j] 
 
       # Find the best feature to include in the result set of features
       if (! feat %in% feat.sub) {
@@ -95,7 +95,7 @@ sfs <- function(data, class, featureSetEval, stopCriterion=-1, stop=FALSE) {
       }
     }
     
-    feat.sub[[length(feat.sub) + 1]] <- best.feat 
+    feat.sub[length(feat.sub) + 1] <- best.feat 
     # Remove the included feature, to not evalute it again
     features <- features[features != best.feat]
     
@@ -122,6 +122,7 @@ sfs <- function(data, class, featureSetEval, stopCriterion=-1, stop=FALSE) {
   
   res
 }
+attr(sfs,'shortName') <- "sfs"
 attr(sfs,'name') <- "Sequential Forward Selection"
 
 #' @author Adan M. Rodriguez
@@ -139,6 +140,7 @@ attr(sfs,'name') <- "Sequential Forward Selection"
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -152,7 +154,7 @@ sffs <- function(data, class, featureSetEval) {
   column.names <- names(data) 
   class.position <- which(column.names == class) 
   features <- column.names[-class.position] 
-  feat.sub <- NULL 
+  feat.sub <- c()
 
   # Check for maximization-minimization
   max <- attr(featureSetEval,'maximize')
@@ -172,7 +174,7 @@ sffs <- function(data, class, featureSetEval) {
 
     # Try to include a feature in the best.feat array
     for (j in seq(along = features)) {
-      feat <- features[[j]]
+      feat <- features[j]
 
       # Find the best feature to include in the result set of features
       if (! feat %in% feat.sub) {
@@ -205,7 +207,7 @@ sffs <- function(data, class, featureSetEval) {
     }
     
     if(best) {
-      feat.sub[[length(feat.sub) + 1]] <- best.feat 
+      feat.sub[length(feat.sub) + 1] <- best.feat 
       features <- features[features != best.feat]
 
       # Step 2: Conditional exclusion. Now, if removing a feature, we get a better set of features. We remove it
@@ -217,7 +219,7 @@ sffs <- function(data, class, featureSetEval) {
         while (continue == TRUE) {
           worst.feat.value <- FALSE
           for (i in seq(along=feat.sub)) {
-            feat <- feat.sub[[i]] 
+            feat <- feat.sub[i] 
             feat.prueba <- feat.sub
             feat.prueba <- feat.prueba[feat.prueba != feat]
             crit.func.eval <- featureSetEval(data, class, feat.prueba)
@@ -241,7 +243,7 @@ sffs <- function(data, class, featureSetEval) {
           # Remove the feature 
           if (worst.feat.value == TRUE) {
             feat.sub <- feat.sub[feat.sub != worst.feat]
-            features[[length(features) + 1]] <- worst.feat
+            features[length(features) + 1] <- worst.feat
           } else {
             continue <- FALSE
           }
@@ -261,6 +263,7 @@ sffs <- function(data, class, featureSetEval) {
   
   res
 }
+attr(sffs,'shortName') <- "sffs"
 attr(sffs,'name') <- "Sequential Floating Forward Selection"
 
 #' @author Adan M. Rodriguez
@@ -281,6 +284,7 @@ attr(sffs,'name') <- "Sequential Floating Forward Selection"
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -313,7 +317,7 @@ sbs <- function(data, class, featureSetEval, stopCriterion=-1, stop=FALSE) {
 
     # Step 1 (Exclusion): Eliminate a feature in each step, if with it, we can get a better evaluation (if not, end of the algorithm)
     for (i in seq(along = feat.sub)) {
-      feat <- feat.sub[[i]]
+      feat <- feat.sub[i]
       feat.prueba <- feat.sub
       feat.prueba <- feat.prueba[feat.prueba != feat]
       value <- featureSetEval(data, class, feat.prueba)
@@ -366,6 +370,7 @@ sbs <- function(data, class, featureSetEval, stopCriterion=-1, stop=FALSE) {
   
   res
 }
+attr(sbs,'shortName') <- "sbs"
 attr(sbs,'name') <- "Sequential Backward Selection"
 
 #' @author Adan M. Rodriguez
@@ -383,6 +388,7 @@ attr(sbs,'name') <- "Sequential Backward Selection"
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -397,7 +403,7 @@ sfbs <- function(data, class, featureSetEval) {
   class.position <- which(column.names == class) 
   features <- column.names[-class.position] 
   feat.sub <- as.vector(features)
-  excluded.features <- NULL
+  excluded.features <- c()
 
   # Check for maximization-minimization
   max <- attr(featureSetEval,'maximize')
@@ -410,7 +416,7 @@ sfbs <- function(data, class, featureSetEval) {
     best.feat.value <- NULL
 
     for (i in seq(along = feat.sub)) {
-      feat <- feat.sub[[i]]
+      feat <- feat.sub[i]
       feat.prueba <- feat.sub
       feat.prueba <- feat.prueba[feat.prueba != feat]
       value <- featureSetEval(data, class, feat.prueba)
@@ -443,7 +449,7 @@ sfbs <- function(data, class, featureSetEval) {
       feat.sub <- feat.sub[feat.sub != best.feat]
       
       # Save the excluded feature for the future
-      excluded.features[[length(excluded.features) + 1]] <- best.feat
+      excluded.features[length(excluded.features) + 1] <- best.feat
 
       
       # Step 2: Conditional inclusion.
@@ -456,9 +462,9 @@ sfbs <- function(data, class, featureSetEval) {
         
         # See if including a feature of the removed, we can get a better evaluation
         for (i in seq(along = excluded.features)) {
-          feat <- excluded.features[[i]] 
+          feat <- excluded.features[i] 
           feat.prueba <- feat.sub
-          feat.prueba[[length(feat.prueba) + 1]] <- feat
+          feat.prueba[length(feat.prueba) + 1] <- feat
           crit.func.eval <- featureSetEval(data, class, feat.prueba)
 
           if(max){ # Classification -> maximize
@@ -479,7 +485,7 @@ sfbs <- function(data, class, featureSetEval) {
         }
         # Include the feature in the result set of features
         if (worst.feat.value == TRUE) {
-          feat.sub[[length(feat.sub) + 1]] <- worst.feat
+          feat.sub[length(feat.sub) + 1] <- worst.feat
           excluded.features <- excluded.features[excluded.features != worst.feat]  
         } else {
           continue <- FALSE
@@ -498,4 +504,5 @@ sfbs <- function(data, class, featureSetEval) {
   
   res
 }
+attr(sfbs,'shortName') <- "sfbs"
 attr(sfbs,'name') <- "Sequential Floating Backward Selection"

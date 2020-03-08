@@ -21,4 +21,5 @@ test_that("Algorithm performs correctly", {
 
 test_that("Name is set", {
   expect_equal(attr(LCC,'name'),"Linear Consistency-Constrained");
+  expect_equal(attr(LCC,'shortName'),"LCC");
 })

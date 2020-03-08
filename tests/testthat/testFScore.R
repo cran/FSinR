@@ -16,4 +16,5 @@ test_that("Performs correctly", {
 
 test_that("Name is set", {
   expect_equal(attr(fscore,'name'),"F-score");
+  expect_equal(attr(fscore,'shortName'),"fscore");
 })

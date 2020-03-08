@@ -25,4 +25,5 @@ test_that("Results are correct", {
 
 test_that("It has correct name", {
   expect_equal(attr(IEPConsistency, 'name'),"Inconsistent Examples Pairs Consistency")
+  expect_equal(attr(IEPConsistency, 'shortName'),"IEPConsistency")
 })

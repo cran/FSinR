@@ -14,4 +14,5 @@ test_that("Gini functions work", {
 
 test_that("Name is correct", {
   expect_equal(attr(giniIndex,'name'),"Gini Index");
+  expect_equal(attr(giniIndex,'shortName'),"giniIndex");
 })

@@ -13,4 +13,5 @@ test_that("Results are correct", {
 
 test_that("Names are set", {
   expect_equal(attr(deepFirstSearch,'name'),"Deep First Search");
+  expect_equal(attr(deepFirstSearch,'shortName'),"deepFirstSearch");
 })

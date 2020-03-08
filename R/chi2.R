@@ -1,5 +1,4 @@
 # Measures based on the chi squared test. Individual Measures
-
 #' Cramer V measure
 #'
 #' Calculates Cramer's V value \insertCite{Cramer1946}{FSinR}, evaluating features individually
@@ -7,16 +6,17 @@
 #' @param data - A data frame with the features and the class of the examples
 #' @param class - The name of the dependent variable
 #' @param features - The feature or features to evalute individually
-#'
+#' @importFrom Rdpack reprompt
 #' @return - Cramer's V value for each selected feature
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
 #' cramer(iris,'Species','Sepal.Length')
 cramer <- function(data, class, features) {
-    measures <- NULL
+    measures <- c()
 
     # Get values of the features and the class
     features <- unlist(features)
@@ -54,16 +54,17 @@ cramer <- function(data, class, features) {
         }
 
         # Store a value for each feature
-        measures[[length(measures) + 1]] <- result
+        measures[length(measures) + 1] <- result
     }
     
     if (length(features) == 1) {
-        return(measures[[1]])
+        return(measures[1])
     }
     names(measures) <- features
     return(measures)
 }
 attr(cramer,'name') <- "Cramer"
+attr(cramer,'shortName') <- "cramer"
 attr(cramer,'maximize') <- TRUE
 attr(cramer,'kind') <- "Individual measure"
 
@@ -78,12 +79,13 @@ attr(cramer,'kind') <- "Individual measure"
 #' @return - The chi squared value for each selected feature
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
 #' chiSquared(iris,'Species','Sepal.Length')
 chiSquared <- function(data, class, features) {
-    measures <- NULL
+    measures <- c()
 
     # Get values of the features and the class
     features <- unlist(features)
@@ -110,14 +112,15 @@ chiSquared <- function(data, class, features) {
         chi.squared <- sum(((joint - expected) ^ 2) / expected)
 
         # Store a value for each feature
-        measures[[length(measures) + 1]] <- chi.squared
+        measures[length(measures) + 1] <- chi.squared
     }
     if (length(features) == 1) {
-        return(measures[[1]])
+        return(measures[1])
     }
     names(measures) <- features
     return(measures)
 }
+attr(chiSquared,'shortName') <- "chiSquared"
 attr(chiSquared,'name') <- "Chi Squared"
 attr(chiSquared,'maximize') <- TRUE
 attr(chiSquared,'kind') <- "Individual measure"

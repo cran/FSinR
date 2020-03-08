@@ -24,4 +24,5 @@ test_that("Results are correct", {
 
 test_that("It has correct name", {
   expect_equal(attr(binaryConsistency, 'name'),"Binary Consistency")
+  expect_equal(attr(binaryConsistency, 'shortName'),"binaryConsistency")
 })

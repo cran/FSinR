@@ -10,4 +10,5 @@ test_that("Results are correct", {
 
 test_that("Name is set", {
   expect_equal(attr(selectPercentile,'name'),"Select Percentile");
+  expect_equal(attr(selectPercentile,'shortName'),"selectPercentile");
 })

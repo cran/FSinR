@@ -13,4 +13,5 @@ test_that("Returns values between 0 and 1", {
 })
 test_that("Names are set", {
   expect_equal(attr(relief,'name'),"Relief");
+  expect_equal(attr(relief,'shortName'),"relief");
 })

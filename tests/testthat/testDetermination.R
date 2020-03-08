@@ -12,5 +12,6 @@ test_that("Results are correct", {
 
 test_that("It has correct name", {
   expect_equal(attr(determinationCoefficient, 'name'),"Determination Coefficient")
+  expect_equal(attr(determinationCoefficient, 'shortName'),"determinationCoefficient")
 })
 

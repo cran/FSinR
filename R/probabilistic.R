@@ -1,5 +1,4 @@
 # Probabilistic Searchs
-
 #' @author Francisco Aragón Royón
 #' @title Las Vegas Wrapper
 #' @description The lvw method  \insertCite{LiuSetiono1996}{FSinR} starts with a certain set of features and in each step a new set is randomly generated, if the new set is better it is saved as the best solution. The algorithm ends when there are no improvements in a certain number of iterations.
@@ -20,6 +19,7 @@
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -129,4 +129,5 @@ lvw <- function(data, class, featureSetEval, start=sample(0:1,ncol(data)-1,repla
   res
 }
 
+attr(lvw,'shortName') <- "lvw"
 attr(lvw,'name') <- "Las Vegas Wrapper"

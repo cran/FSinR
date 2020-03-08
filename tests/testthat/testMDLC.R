@@ -13,4 +13,5 @@ test_that("Performs correctly", {
 
 test_that("Names are set", {
   expect_equal(attr(MDLC,'name'),"MDLC");
+  expect_equal(attr(MDLC,'shortName'),"MDLC");
 })

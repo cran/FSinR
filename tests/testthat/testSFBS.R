@@ -10,4 +10,5 @@ test_that("Sequential search", {
 
 test_that("Names are set", {
   expect_equal(attr(sfbs,'name'),"Sequential Floating Backward Selection");
+  expect_equal(attr(sfbs,'shortName'),"sfbs");
 })

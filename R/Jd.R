@@ -8,6 +8,7 @@
 #' @return - The value of the function for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @import dplyr
 #' @importFrom stats cov
 #' @import rlang
@@ -48,6 +49,7 @@ Jd <- function(data, class, features) {
 
   return (as.numeric(t(vector) %*% solve((matrixA + matrixB)/2) %*% vector))
 }
+attr(Jd,'shortName') <- "Jd"
 attr(Jd,'name') <- "Jd"
 attr(Jd,'maximize') <- TRUE
 attr(Jd,'kind') <- "Set measure"

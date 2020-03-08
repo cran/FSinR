@@ -88,4 +88,5 @@ test_that("RFSM works with all features", {
 
 test_that("Name is set", {
   expect_equal(attr(RFSM,'name'),"RFSM");
+  expect_equal(attr(RFSM,'shortName'),"RFSM");
 })

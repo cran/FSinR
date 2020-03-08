@@ -24,4 +24,5 @@ test_that("Results are correct", {
 
 test_that("It has correct name", {
   expect_equal(attr(roughsetConsistency, 'name'),"Rough Set Consistency")
+  expect_equal(attr(roughsetConsistency, 'shortName'),"roughsetConsistency")
 })

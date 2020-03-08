@@ -4,8 +4,15 @@
 \alias{hc}
 \title{Hill-Climbing}
 \usage{
-hc(data, class, featureSetEval, start = NULL, nneigh = length(data) -
-  1, repeats = 1, verbose = FALSE)
+hc(
+  data,
+  class,
+  featureSetEval,
+  start = NULL,
+  nneigh = length(data) - 1,
+  repeats = 1,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{data}{\itemize{
@@ -25,7 +32,7 @@ hc(data, class, featureSetEval, start = NULL, nneigh = length(data) -
 }}
 
 \item{nneigh}{\itemize{
-\item Number of neighbors to evaluate in each iteration of the algorithm
+\item Number of neighbors to evaluate in each iteration of the algorithm. By default: all posibles. It is important to note that a high value of this parameter considerably increases the computation time.
 }}
 
 \item{repeats}{\itemize{

@@ -4,8 +4,17 @@
 \alias{ga}
 \title{Genetic Algorithm}
 \usage{
-ga(data, class, featureSetEval, popSize = 20, pcrossover = 0.8,
-  pmutation = 0.1, maxiter = 100, run = 100, verbose = FALSE)
+ga(
+  data,
+  class,
+  featureSetEval,
+  popSize = 20,
+  pcrossover = 0.8,
+  pmutation = 0.1,
+  maxiter = 100,
+  run = 100,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{data}{\itemize{

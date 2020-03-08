@@ -12,4 +12,5 @@ test_that("Results are correct", {
 
 test_that("It has correct name", {
   expect_equal(attr(gainRatio, 'name'),"Gain Ratio")
+  expect_equal(attr(gainRatio, 'shortName'),"gainRatio")
 })

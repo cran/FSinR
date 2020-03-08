@@ -4,12 +4,24 @@
 \alias{ts}
 \title{Tabu Search}
 \usage{
-ts(data, class, featureSetEval, start = NULL, numNeigh = (ncol(data) -
-  1), tamTabuList = 5, iter = 100, iterNoImprovement = NULL,
-  intensification = NULL, iterIntensification = 50,
-  interPercentaje = 75, tamIntermediateMemory = 5,
-  diversification = NULL, iterDiversification = 50,
-  forgetTabuList = TRUE, verbose = FALSE)
+ts(
+  data,
+  class,
+  featureSetEval,
+  start = NULL,
+  numNeigh = (ncol(data) - 1),
+  tamTabuList = 5,
+  iter = 100,
+  iterNoImprovement = NULL,
+  intensification = NULL,
+  iterIntensification = 50,
+  interPercentaje = 75,
+  tamIntermediateMemory = 5,
+  diversification = NULL,
+  iterDiversification = 50,
+  forgetTabuList = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{data}{\itemize{
@@ -78,6 +90,13 @@ ts(data, class, featureSetEval, start = NULL, numNeigh = (ncol(data) -
 }
 \value{
 A list is returned containing for each repetition of the algorithm:
+\describe{
+\item{bestFeatures}{A vector with all features. Selected features are marked with 1, unselected features are marked with 0}
+\item{bestFitness}{Evaluation measure obtained with the feature selection}
+\item{basicStage}{List containing the best neighbour in each iteration along with its obtained evaluation measure, and the content of the taboo list in each iteration}
+\item{intensificationStage}{List containing for each repetition of the intensification phase the best neighbour in each iteration along with its obtained evaluation measure, and the content of the taboo list in each iteration.}
+\item{diversificationStage}{List containing for each repetition of the diversification phase the best neighbour in each iteration along with its obtained evaluation measure, and the content of the taboo list in each iteration.}
+}
 }
 \description{
 The Tabu Search\insertCite{glover1986}{FSinR} \insertCite{glover1990}{FSinR} method starts with a certain set of features and in each iteration it searches among its neighbors to advance towards a better solution. The method has a memory (tabu list) that prevents returning to recently visited neighbors. The method ends when a certain number of iterations are performed, or when a certain number of iterations are performed without improvement, or when there are no possible neighbors. Once the method is finished, an intensification phase can be carried out that begins in the space of the best solutions found, or a diversification phase can be carried out in which solutions not previously visited are explored.
@@ -88,13 +107,6 @@ ts(iris, 'Species', roughsetConsistency, iter = 5)
 }
 \references{
 \insertAllCited{}
-\describe{
-\item{bestFeatures}{A vector with all features. Selected features are marked with 1, unselected features are marked with 0}
-\item{bestFitness}{Evaluation measure obtained with the feature selection}
-\item{basicStage}{List containing the best neighbour in each iteration along with its obtained evaluation measure, and the content of the taboo list in each iteration}
-\item{intensificationStage}{List containing for each repetition of the intensification phase the best neighbour in each iteration along with its obtained evaluation measure, and the content of the taboo list in each iteration.}
-\item{diversificationStage}{List containing for each repetition of the diversification phase the best neighbour in each iteration along with its obtained evaluation measure, and the content of the taboo list in each iteration.}
-}
 }
 \author{
 Francisco Aragón Royón

@@ -1,4 +1,5 @@
 # Measures for regression problems, where the class is continous
+#' @importFrom Rdpack reprompt
 
 #' @author Adan M. Rodriguez
 #' @title R Squared, to continous features
@@ -10,6 +11,7 @@
 #' @return - The R squared value for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @importFrom stats as.formula
 #' @importFrom stats lm
 #' @export
@@ -32,6 +34,7 @@ determinationCoefficient <- function(data, class, features) {
   return(value)
 }
 suppressWarnings(warning("In summary.lm(model) : essentially perfect fit: summary may be unreliable"))
+attr(determinationCoefficient,'shortName') <- "determinationCoefficient"
 attr(determinationCoefficient,'name') <- "Determination Coefficient"
 attr(determinationCoefficient,'maximize') <- TRUE
 attr(determinationCoefficient,'kind') <- "Set measure"

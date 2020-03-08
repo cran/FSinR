@@ -1,5 +1,4 @@
 # Measures based on consistency
-
 library(digest)
 
 #' @author Adan M. Rodriguez
@@ -12,6 +11,7 @@ library(digest)
 #' @return - The consistency value for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @import digest
 #' @importFrom stats aggregate
 #' @export
@@ -45,6 +45,7 @@ roughsetConsistency <- function(data, class, features) {
 
   return(result)
 }
+attr(roughsetConsistency,'shortName') <- "roughsetConsistency"
 attr(roughsetConsistency,'name') <- "Rough Set Consistency"
 attr(roughsetConsistency,'maximize') <- TRUE
 attr(roughsetConsistency,'kind') <- "Set measure"
@@ -59,6 +60,7 @@ attr(roughsetConsistency,'kind') <- "Set measure"
 #' @return - The consistency value for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -76,6 +78,7 @@ binaryConsistency <- function(data, class, features) {
 
   return(result)
 }
+attr(binaryConsistency,'shortName') <- "binaryConsistency"
 attr(binaryConsistency,'name') <- "Binary Consistency"
 attr(binaryConsistency,'maximize') <- TRUE
 attr(binaryConsistency,'kind') <- "Set measure"
@@ -90,6 +93,7 @@ attr(binaryConsistency,'kind') <- "Set measure"
 #' @return - The consistency value for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @import digest
 #' @importFrom stats aggregate
 #' @export
@@ -114,6 +118,7 @@ IEConsistency <- function(data, class, features) {
 
   return(result)
 }
+attr(IEConsistency,'shortName') <- "IEConsistency"
 attr(IEConsistency,'name') <- "Inconsistent Examples Consistency"
 attr(IEConsistency,'maximize') <- TRUE
 attr(IEConsistency,'kind') <- "Set measure"
@@ -130,6 +135,7 @@ attr(IEConsistency,'kind') <- "Set measure"
 #' @return - The consistency value for the selected features
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @import digest
 #' @importFrom stats aggregate
 #' @export
@@ -177,6 +183,7 @@ IEPConsistency <- function(data, class, features) {
 
   return(result)
 }
+attr(IEPConsistency,'shortName') <- "IEPConsistency"
 attr(IEPConsistency,'name') <- "Inconsistent Examples Pairs Consistency"
 attr(IEPConsistency,'maximize') <- TRUE
 attr(IEPConsistency,'kind') <- "Set measure"

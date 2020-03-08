@@ -7,7 +7,7 @@
 #' @param class - The name of the dependent variable
 #' @param featureSetEval - The measure for evaluate features
 #' @param start - Binary vector with the set of initial features
-#' @param nneigh - Number of neighbors to evaluate in each iteration of the algorithm
+#' @param nneigh - Number of neighbors to evaluate in each iteration of the algorithm. By default: all posibles. It is important to note that a high value of this parameter considerably increases the computation time.
 #' @param repeats - Number of repetitions of the algorithm
 #' @param verbose - Print the partial results in each iteration
 #'
@@ -21,6 +21,7 @@
 #' }
 #' @references
 #'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -360,6 +361,7 @@ hc <- function(data, class, featureSetEval, start=NULL, nneigh=length(data)-1, r
   
   res
 }
+attr(hc,'shortName') <- "hc"
 attr(hc,'name') <- "Hill Climbing"
 
 
@@ -384,8 +386,6 @@ attr(hc,'name') <- "Hill Climbing"
 #' @param verbose - Print the partial results in each iteration
 #'
 #' @return A list is returned containing for each repetition of the algorithm:
-#' @references
-#'    \insertAllCited{}
 #' \describe{
 #'   \item{bestFeatures}{A vector with all features. Selected features are marked with 1, unselected features are marked with 0}
 #'   \item{bestFitness}{Evaluation measure obtained with the feature selection}
@@ -393,6 +393,9 @@ attr(hc,'name') <- "Hill Climbing"
 #'   \item{intensificationStage}{List containing for each repetition of the intensification phase the best neighbour in each iteration along with its obtained evaluation measure, and the content of the taboo list in each iteration.}
 #'   \item{diversificationStage}{List containing for each repetition of the diversification phase the best neighbour in each iteration along with its obtained evaluation measure, and the content of the taboo list in each iteration.}
 #' }
+#' @references
+#'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
 #' @export
 #'
 #' @examples
@@ -782,7 +785,7 @@ ts <- function(data, class, featureSetEval, start=NULL, numNeigh=(ncol(data)-1),
         actualPosition[(1:length(features))[-excluded]] <- 1  # All features not excluded
       }
       
-      resInter <- tabuSearch(tabuList, actualPosition, iter, longMemory, intermediateMemory, excluded)
+      resInter <- tabuSearch(tabuList, actualPosition, iterIntensification, longMemory, intermediateMemory, excluded)
       
       tabuList <- resInter[[2]]
       longMemory <- resInter[[3]]
@@ -836,7 +839,7 @@ ts <- function(data, class, featureSetEval, start=NULL, numNeigh=(ncol(data)-1),
       }
       actualPosition <- generateFromlongMemory(longMemory, totalIter)
       
-      resDiver <- tabuSearch(tabuList, actualPosition, iter, longMemory, intermediateMemory, NULL)
+      resDiver <- tabuSearch(tabuList, actualPosition, iterDiversification, longMemory, intermediateMemory, NULL)
       
       tabuList <- resDiver[[2]]
       longMemory <- resDiver[[3]]
@@ -879,4 +882,5 @@ ts <- function(data, class, featureSetEval, start=NULL, numNeigh=(ncol(data)-1),
   return(res)
 }
 
+attr(ts,'shortName') <- "ts"
 attr(ts,'name') <- "Tabu Search"

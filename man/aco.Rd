@@ -4,9 +4,22 @@
 \alias{aco}
 \title{Ant Colony Optimization (Advanced Binary Ant Colony Optimization)}
 \usage{
-aco(data, class, featureSetEval, population = 10, iter = 10, a = 1,
-  b = 1, p = 0.2, q = 1, t0 = 0.2, tmin = 0, tmax = 1,
-  mode = 1, verbose = FALSE)
+aco(
+  data,
+  class,
+  featureSetEval,
+  population = 10,
+  iter = 10,
+  a = 1,
+  b = 1,
+  p = 0.2,
+  q = 1,
+  t0 = 0.2,
+  tmin = 0,
+  tmax = 1,
+  mode = 1,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{data}{\itemize{

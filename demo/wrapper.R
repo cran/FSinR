@@ -61,7 +61,7 @@ sa(mtcars, 'mpg', wrapper, temperature = 5, temperature_min=0.01, reduction=0.6,
 #ts(mtcars, 'mpg', wrapper)
 #ts(mtcars, 'mpg', wrapper, numNeigh = 10, tamTabuList = 6, iter = 15, verbose=TRUE)
 #ts(mtcars, 'mpg', wrapper, numNeigh = 4, tamTabuList = 4, iter = 5, intersification=2, iterIntersification=5, verbose=TRUE)
-ts(iris, 'Species', wrapper, numNeigh = 4, tamTabuList = 4, iter = 5, intersification=2, iterIntersification=5, diversification=1, iterDiversification=5, verbose=TRUE)
+ts(mtcars, 'mpg', wrapper, numNeigh = 4, tamTabuList = 4, iter = 5, intersification=2, iterIntersification=5, diversification=1, iterDiversification=5, verbose=TRUE)
 
 hc(mtcars, 'mpg', wrapper)
 lvw(mtcars, 'mpg', wrapper, K=15, verbose=TRUE)
