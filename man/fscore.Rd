@@ -4,31 +4,26 @@
 \alias{fscore}
 \title{F-score measure}
 \usage{
-fscore(data, class, features)
-}
-\arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{features}{\itemize{
-\item The name of the selected feature (only 1 feature)
-}}
+fscore()
 }
 \value{
-\itemize{
-\item The value of the function for the selected feature
-}
+Returns a function that is used to generate an individual evaluation measure using the F-score.
 }
 \description{
-Evaluates a feature using the F-score approach defined in \insertCite{Wang2018}{FSinR}.
+Generates an evaluation function that calculates the F-score approach defined in \insertCite{Wang2018}{FSinR} (individual measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-fscore(ToothGrowth, 'supp', c('len'))
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly to individually evaluate a set of features
+## Classification problem
+
+# Generate the evaluation function with F-Score
+fscore_evaluator <- fscore()
+# Evaluate the features (parameters: dataset, target variable and features)
+fscore_evaluator(ToothGrowth, 'supp', c('len'))
+}
 }
 \references{
 \insertAllCited{}

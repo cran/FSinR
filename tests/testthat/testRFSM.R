@@ -1,17 +1,4 @@
-context("RFSM measure")
-
-test_that("is discrete should return true", {
-  expect_equal(is.discrete(BOD$Time), TRUE)
-  expect_equal(is.discrete(ChickWeight$Chick), TRUE)
-  expect_equal(is.discrete(Seatbelts[,7]), TRUE) #VanKilled
-  
-})
-
-test_that("is discrete should return false", {
-  expect_equal(is.discrete(BOD$demand), FALSE)
-  expect_equal(is.discrete(ChickWeight$weight), FALSE)
-  expect_equal(is.discrete(Seatbelts[,6]), FALSE) #PetrolPrice
-})
+context("Relief Feature Set Measure")
 
 test_that("RFSM_diff works with continuous features", {
   e1 <- iris[1,]
@@ -63,30 +50,30 @@ test_that("selectkneighbours works", {
   expect_true(tail(duplicated(rbind(result,e4)),1))
 })
 
-test_that("RFSM measure returns 0 on empty set", {
-  expect_equal(RFSM(iris, 'Species', c()), 0)
+test_that("ReliefFeatureSetMeasure measure returns 0 on empty set", {
+  expect_equal( ReliefFeatureSetMeasure()(iris, 'Species', c()), 0)
 })
 
 
-test_that("RFSM works with 1 feature", {
-  result <- RFSM(iris, 'Species', c('Petal.Length'))
+test_that("ReliefFeatureSetMeasure works with 1 feature", {
+  result <- ReliefFeatureSetMeasure()(iris, 'Species', c('Petal.Length'))
   expect_gte(result, -1)
   expect_lte(result, 1)
 })
 
-test_that("RFSM works multiple features", {
-  result <- RFSM(iris, 'Species', c('Sepal.Length','Petal.Length'))
+test_that("ReliefFeatureSetMeasure works multiple features", {
+  result <- ReliefFeatureSetMeasure()(iris, 'Species', c('Sepal.Length','Petal.Length'))
   expect_gte(result, -1)
   expect_lte(result, 1)
 })
 
-test_that("RFSM works with all features", {
-  result <- RFSM(iris, 'Species', c('Sepal.Length','Sepal.Width','Petal.Length','Petal.Width'))
+test_that("ReliefFeatureSetMeasure works with all features", {
+  result <- ReliefFeatureSetMeasure()(iris, 'Species', c('Sepal.Length','Sepal.Width','Petal.Length','Petal.Width'))
   expect_gte(result, -1)
   expect_lte(result, 1)
 })
 
 test_that("Name is set", {
-  expect_equal(attr(RFSM,'name'),"RFSM");
-  expect_equal(attr(RFSM,'shortName'),"RFSM");
+  expect_equal(attr(ReliefFeatureSetMeasure(),'name'),"ReliefFeatureSetMeasure");
+  expect_equal(attr(ReliefFeatureSetMeasure(),'shortName'),"RFSM");
 })

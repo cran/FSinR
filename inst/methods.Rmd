@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-  
+
   ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -62,9 +62,9 @@ The wrapper evaluation measure function is created and added to the list of feat
 resamplingParams <- list(method = "cv", number = 10)
 fittingParams <- list(preProc = c("center", "scale"), metric = "Accuracy", tuneGrid = expand.grid(k = c(1:20)))
 
-wrapper <- wrapperGenerator("knn", resamplingParams, fittingParams)
+wra <- wrapper("knn", resamplingParams, fittingParams)
 
-measures <- list(IEConsistency, IEPConsistency, mutualInformation, binaryConsistency, wrapper)
+measures <- list(IEConsistency, IEPConsistency, mutualInformation, binaryConsistency, wra)
 algorithms <- list(sfs, ga, lvw)
 for (algorithm in algorithms) {
   for (measure in measures) {

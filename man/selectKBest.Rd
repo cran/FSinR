@@ -4,39 +4,33 @@
 \alias{selectKBest}
 \title{Select K best}
 \usage{
-selectKBest(data, class, featureEval, k = 1)
+selectKBest(k = 1)
 }
 \arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{featureEval}{\itemize{
-\item The measure used to evaluate features
-}}
-
-\item{k}{\itemize{
-\item Number (positive integer) of returned features
-}}
+\item{k}{Number (positive integer) of returned features}
 }
 \value{
-A list is returned containing:
-\describe{
-\item{bestFeatures}{A vector with all features. Selected features are marked with 1, unselected features are marked with 0}
-\item{featuresSelected}{The names of the k returned features sorted according to the result of the evaluation measure}
-\item{valuePerFeature}{The evaluation measures of the k returned features}
-}
+Returns a direct search function that is used in the feature selection process.
 }
 \description{
-Takes the 'k' features with the greatest evaluations
+Generates a direct search function that takes the 'k' features with the greatest evaluations (The features evaluation is individual). This function is called internally within the \code{\link{directSearchAlgorithm}} function.
 }
 \examples{
-## Select K best for iris dataset (filter method)
-selectKBest(iris, 'Species', roughsetConsistency, 2) # 2 best features
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly and performing a direct search process
+## Classification problem
+
+
+# Generates the filter evaluation function
+filter_evaluator <- filterEvaluator('determinationCoefficient')
+
+# Generates the direct search function with k-best
+skb_direct_search <- selectKBest()
+# Performs the direct search process directly (parameters: dataset, target variable and evaluator)
+skb_direct_search(iris, 'Species', filter_evaluator)
+}
 }
 \author{
 Adan M. Rodriguez

@@ -4,31 +4,26 @@
 \alias{cramer}
 \title{Cramer V measure}
 \usage{
-cramer(data, class, features)
-}
-\arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{features}{\itemize{
-\item The feature or features to evalute individually
-}}
+cramer()
 }
 \value{
-\itemize{
-\item Cramer's V value for each selected feature
-}
+Returns a function that is used to generate an individual evaluation measure using Cramer V.
 }
 \description{
-Calculates Cramer's V value \insertCite{Cramer1946}{FSinR}, evaluating features individually
+Generates an evaluation function that calculates Cramer's V value \insertCite{Cramer1946}{FSinR}, evaluating features individually (individual measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-cramer(iris,'Species','Sepal.Length')
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly to individually evaluate a set of features
+## Classification problem
+
+# Generate the evaluation function with Cramer
+cramer_evaluator <- cramer()
+# Evaluate the features (parameters: dataset, target variable and features)
+cramer_evaluator(iris,'Species',c('Sepal.Length'))
+}
 }
 \references{
 \insertAllCited{}

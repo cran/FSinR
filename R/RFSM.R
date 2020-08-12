@@ -33,16 +33,6 @@ RFSM_diff <- function(data, f, e1, e2) {
  }
 }
 
-is.discrete <- function(data) {
-  #Check if var is integer.
-  enough_values <- length(data) > 30
-  condition <- TRUE
-  if (enough_values == TRUE) {
-    condition <- length(unique(data)) / length(data) < 0.1
-  }
-  return((all(data == as.integer(data)) || all(typeof(data) == "integer")) && condition)
-}
-
 #' @importFrom rlang .data
 selectKNeighbours <- function(data, S, examples, example, k, penalization = FALSE) {
   result <- examples
@@ -57,73 +47,138 @@ selectKNeighbours <- function(data, S, examples, example, k, penalization = FALS
 }
 
 #' @author Alfonso Jiménez-Vílchez
-#' @title RFSM evaluation measure
-#' @description Feature set measure based on relief. Described in \insertCite{Arauzo2004}{FSinR}
-#' @param data - A data frame with the features and the class of the examples
-#' @param class - The name of the dependent variable
-#' @param features - The names of the selected features
-#' @param m - Number of iterations
-#' @param k - Number of neighbours
+#' @title Relief Feature Set Measure evaluation measure
+#' @description Generates an evaluation function that applies Feature set measure based on Relief (set measure). Described in \insertCite{Arauzo2004}{FSinR}. This function is called internally within the \code{\link{filterEvaluator}} function.
+#' 
+#' @param iterations Number of iterations
+#' @param kNeightbours Number of neighbours
 #'
-#' @return - The value of the function for the selected features
+#' @return Returns a function that is used to generate an evaluation set measure (between -1 and 1) using RFSM value for the selected features.
 #' @references
 #'    \insertAllCited{}
 #' @importFrom Rdpack reprompt
 #' @export
 #' @import tidyr
 #' @import prodlim
+#' @import dplyr
 #'
 #' @examples
-#' RFSM(iris, 'Species', c('Sepal.Width','Sepal.Length'))
-RFSM <- function(data, class, features, m = 5, k = 4) {
-  
-  if (!length(features)) {
-    return(0);
-  }
-  
-  # Group all proyected examples in lists by their class
-  # Get values of the features
-  features <- unlist(features)
-  feature.data <- data[, features, drop = FALSE]
-  feature.classes <- as.data.frame(data[, class, drop = FALSE])
-  feature.list <- unique(feature.classes)
-  
-  hash.table <- list()
-  for (i in 1:nrow(feature.list)) {
-    hash.table[[i]] <- subset(feature.data, FALSE) # Get dataframe with columns names but no rows.
-  }
-  for (i in 1:nrow(feature.data)) {
-    class_index <- which(feature.list == as.character(feature.classes[i, ]))
-    hash.table[[class_index]][nrow(hash.table[[class_index]]) + 1, ] <- feature.data[i, ] # rbind does not work correctly
-  }
-  feature.prob <- list()
-  for (i in 1:nrow(feature.list)) {
-    feature.prob[[i]] <- nrow(hash.table[[i]]) / nrow(data)
-  }
-  
-  w <- 0;
-  
-  for (i in range(m)) {
-    e1.row <- sample(nrow(data), 1)
-    e1 <- data[e1.row, ]
-    e1.data <- e1[, features, drop = FALSE]
-    for (j in 1:nrow(feature.list)) {
-      examples <- hash.table[[j]][, features, drop = FALSE]
-      if (e1[, class] == feature.list[j, ]) {
-        position <- row.match(e1.data, examples)
-        if (!is.na(position)) {
-          examples <- examples[-c(position),, drop = FALSE]
+#'\dontrun{ 
+#'
+#' ## The direct application of this function is an advanced use that consists of using this 
+#' # function directly to evaluate a set of features
+#' ## Classification problem
+#' 
+#' # Generate the evaluation function with Cramer
+#' RFSM_evaluator <- ReliefFeatureSetMeasure()
+#' # Evaluate the features (parameters: dataset, target variable and features)
+#' RFSM_evaluator(iris,'Species',c('Sepal.Length','Sepal.Width','Petal.Length','Petal.Width'))
+#' }
+ReliefFeatureSetMeasure <- function(iterations = 5, kNeightbours = 4) {
+
+  RFSMevaluator <- function(original_data, class, features) {
+
+    if (!length(features)) {
+      return(0);
+    }
+
+    # Group all proyected examples in lists by their class
+    # Get values of the features
+    features <- unlist(features)
+    feature.data <- original_data[, features, drop = FALSE]
+    feature.classes <- as.data.frame(original_data[, class, drop = FALSE])
+    feature.list <- unique(feature.classes)
+
+    hash.table <- list()
+    for (i in 1:nrow(feature.list)) {
+      hash.table[[i]] <- subset(feature.data, FALSE) # Get dataframe with columns names but no rows.
+    }
+    for (i in 1:nrow(feature.data)) {
+      class_index <- which(feature.list == as.character(feature.classes[i, ]))
+      hash.table[[class_index]][nrow(hash.table[[class_index]]) + 1, ] <- feature.data[i, ] # rbind does not work correctly
+    }
+    feature.prob <- list()
+    for (i in 1:nrow(feature.list)) {
+      feature.prob[[i]] <- nrow(hash.table[[i]]) / nrow(original_data)
+    }
+
+    w <- 0;
+
+    for (i in 1:iterations) {
+      e1.row <- sample(nrow(original_data), 1)
+      e1 <- original_data[e1.row, ]
+      e1.data <- e1[, features, drop = FALSE]
+      for (j in 1:nrow(feature.list)) {
+        examples <- hash.table[[j]][, features, drop = FALSE]
+        if (e1[, class] == feature.list[j, ]) {
+          position <- row.match(e1.data, examples)
+          if (!is.na(position)) {
+            examples <- examples[-c(position),, drop = FALSE]
+          }
+          if (nrow(examples) > 0) {
+            w <- w - sum(selectKNeighbours(original_data, features, examples, e1.data, kNeightbours)$rfsm_distance) / kNeightbours
+          }
+        } else {
+          w <- w + feature.prob[[j]] * sum(selectKNeighbours(original_data, features, examples, e1.data, kNeightbours, TRUE)$rfsm_distance) / kNeightbours
         }
-        w <- w - sum(selectKNeighbours(data, features, examples, e1.data, k)$rfsm_distance) / k
-      } else {
-        w <- w + feature.prob[[j]] * sum(selectKNeighbours(data, features, examples, e1.data, k, TRUE)$rfsm_distance) / k
       }
     }
+
+    return(w / iterations)
+  }
+  attr(RFSMevaluator,'shortName') <- "RFSM"
+  attr(RFSMevaluator,'name') <- "ReliefFeatureSetMeasure"
+  attr(RFSMevaluator,'target') <- "maximize"
+  attr(RFSMevaluator,'kind') <- "Set measure"
+  attr(RFSMevaluator,'needsDataToBeDiscrete') <- FALSE
+  attr(RFSMevaluator,'needsDataToBeContinuous') <- FALSE
+
+  return(RFSMevaluator)
+}
+
+
+#' @author Alfonso Jiménez-Vílchez
+#' @title Relief Feature Set Measure evaluation measure
+#' @description Generates an evaluation function that applies Feature set measure based on Relief (set measure). Described in \insertCite{Arauzo2004}{FSinR}. This function is called internally within the \code{\link{filterEvaluator}} function.
+#' 
+#' @param iterations Number of iterations
+#' @param kNeightbours Number of neighbours
+#'
+#' @return Returns a function that is used to generate an evaluation set measure (between -1 and 1) using RFSM value for the selected features.
+#' @references
+#'    \insertAllCited{}
+#' @importFrom Rdpack reprompt
+#' @export
+#' @import tidyr
+#' @import prodlim
+#' @import dplyr
+#'
+#' @examples
+#'\dontrun{ 
+#'
+#' ## The direct application of this function is an advanced use that consists of using this 
+#' # function directly to evaluate a set of features
+#' ## Classification problem
+#' 
+#' # Generate the evaluation function with Cramer
+#' RFSM_evaluator <- ReliefFeatureSetMeasure()
+#' # Evaluate the features (parameters: dataset, target variable and features)
+#' RFSM_evaluator(iris,'Species',c('Sepal.Length','Sepal.Width','Petal.Length','Petal.Width'))
+#' }
+normalizedReliefFeatureSetMeasure <- function(iterations = 5, kNeightbours = 4) {
+  originalRelief <- ReliefFeatureSetMeasure(iterations = 5, kNeightbours = 4)
+  normalizedRFSMEvaluator <- function(data, class, features) {
+    originalValue <- originalRelief(data, class, features)
+    return(originalValue / 2 + 0.5)
   }
   
-  return(w / m)
+  attr(normalizedRFSMEvaluator,'shortName') <- "normalizedRFSM"
+  attr(normalizedRFSMEvaluator,'name') <- "Normalized ReliefFeatureSetMeasure"
+  attr(normalizedRFSMEvaluator,'target') <- "maximize"
+  attr(normalizedRFSMEvaluator,'kind') <- "Set measure"
+  attr(normalizedRFSMEvaluator,'needsDataToBeDiscrete') <- FALSE
+  attr(normalizedRFSMEvaluator,'needsDataToBeContinuous') <- FALSE
+  
+  return(normalizedRFSMEvaluator)
 }
-attr(RFSM,'shortName') <- "RFSM"
-attr(RFSM,'name') <- "RFSM"
-attr(RFSM,'maximize') <- TRUE
-attr(RFSM,'kind') <- "Set measure"
+

@@ -4,40 +4,35 @@
 \alias{selectThreshold}
 \title{Select threshold}
 \usage{
-selectThreshold(data, class, featureEval, threshold = 0.5)
+selectThreshold(threshold = 0.1)
 }
 \arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{featureEval}{\itemize{
-\item The measure used to evaluate features
-}}
-
 \item{threshold}{\itemize{
 \item Number between 0 and 1
 }}
 }
 \value{
-A list is returned containing:
-\describe{
-\item{bestFeatures}{A vector with all features. Selected features are marked with 1, unselected features are marked with 0}
-\item{featuresSelected}{The names of the returned features sorted according to the result of the evaluation measure}
-\item{valuePerFeature}{The evaluation measures of the returned features}
-}
+Returns a direct search function that is used in the feature selection process.
 }
 \description{
-Selects the features whose evaluation is over/under a user given threshold (It depends on the method that generates the evaluation measure. For example: under for regression methods, over for classification methods, etc.). Features that do not satisfy the threshold, will be removed
+Generates a direct search function that selects the features whose evaluation is over/under a user given threshold (It depends on the method that generates the evaluation measure. For example: under for regression methods, over for classification methods, etc.)(The features evaluation is individual). Features that do not satisfy the threshold, will be removed. This function is called internally within the \code{\link{directSearchAlgorithm}} function.
 }
 \examples{
-## Select Threshold for iris dataset (filter method)
-# Features with a evaluation measure higher than 0.7
-selectThreshold(iris, 'Species', mutualInformation, 0.7) 
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly and performing a direct search process
+## Classification problem
+
+
+# Generates the filter evaluation function
+filter_evaluator <- filterEvaluator('determinationCoefficient')
+
+# Generates the direct search function with threshold
+st_direct_search <- selectThreshold()
+# Performs the direct search process directly (parameters: dataset, target variable and evaluator)
+st_direct_search(iris, 'Species', filter_evaluator) 
+}
 }
 \author{
 Adan M. Rodriguez

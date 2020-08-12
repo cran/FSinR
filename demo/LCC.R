@@ -1,21 +1,16 @@
-## sfbs method for iris dataset (filter method)
-LCC(iris, 'Species', IEConsistency)
+## The direct application of this function is an advanced use that consists of using this 
+# function directly and performing a hybrid search process in a feature space
+## Classification problem
+ 
+# Generates the first filter evaluation function (individual or set measure)
+filter_evaluator_1 <- filterEvaluator('determinationCoefficient')
+# Generates the second filter evaluation function (mandatory set measure)
+filter_evaluator_2 <- filterEvaluator('ReliefFeatureSetMeasure')
+ 
+   
+# Generates the hybrid search function with LCC
+LCC_hybrid_search <- LCC()
+# Run the search process directly (params: dataset, target variable, evaluator1 & evaluator2)
+res <-LCC_hybrid_search(iris, 'Species', filter_evaluator_1, filter_evaluator_2)
 
-## sfbs method for mtcars dataset (filter method)
-LCC(mtcars, 'mpg', IEConsistency)
-
-## sfbs method for iris dataset (wrapper classification)
-resamplingParams <- list(method = "cv", number = 10) # Values for the caret trainControl function
-# Values for the caret train function (x, y, method and trainControl not neccesary)
-fittingParams <- list(preProc = c("center", "scale"), metric="Accuracy",
-                      tuneGrid = expand.grid(k = c(1:20)))
-wrapper <- wrapperGenerator("knn", resamplingParams, fittingParams) # wrapper method
-LCC(iris, 'Species', wrapper)
-
-## sfbs method for mtcars dataset (wrapper regression)
-resamplingParams <- list(method = "cv", number = 10) # Values for the caret trainControl function
-# Values for the caret train function (x, y, method and trainControl not neccesary)
-fittingParams <- list(preProc = c("center", "scale"), metric="RMSE",
-                      tuneGrid = expand.grid(size = seq(1,12,by=2), decay=0), trace=FALSE)
-wrapper <- wrapperGenerator("nnet",resamplingParams, fittingParams) # wrapper method
-LCC(mtcars, 'mpg', wrapper)
+print(res)

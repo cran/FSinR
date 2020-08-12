@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-  
+
   ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -25,15 +25,15 @@ In this example a selection of evaluation measures (Inconsistent Examples, Incon
 ```{r, 'Simple'}
 library(FSinR)
 
-sfs(iris, 'Species', IEConsistency)
-sfs(iris, 'Species', mutualInformation)
+sequentialForwardSelection()(iris, 'Species', IEConsistency())
+sequentialForwardSelection()(iris, 'Species', mutualInformation())
 ```
 
 In order to save some lines of code, as these functions share the same inteface, they can be used as following:
 ```{r, 'List of measures'}
-measures <- list(IEConsistency, mutualInformation)
+measures <- list(IEConsistency(), mutualInformation())
 for (measure in measures) {
-  result <- sfs(iris, 'Species', measure)
+  result <- sequentialForwardSelection()(iris, 'Species', measure)
   print(attr(measure,'name'))
   print(result$bestFeatures)
 }
@@ -41,8 +41,8 @@ for (measure in measures) {
 
 Algorithms also share the same interface, so they can be combined as well. In this example Sequential Forward Selection, Genetic Algorithm and Las Vegas Wrapper are run with all the previous mentioned evaluation measures:
 ```{r, 'List of algorithms'}
-measures <- list(IEConsistency, mutualInformation)
-algorithms <- list(sfs, lvw)
+measures <- list(IEConsistency(), mutualInformation())
+algorithms <- list(sequentialForwardSelection(), LasVegas())
 for (algorithm in algorithms) {
   for (measure in measures) {
     result <- algorithm(iris, 'Species', measure)
@@ -60,7 +60,7 @@ The wrapper evaluation measure function is created and added to the list of feat
 resamplingParams <- list(method = "cv", number = 10)
 fittingParams <- list(preProc = c("center", "scale"), metric = "Accuracy", tuneGrid = expand.grid(k = c(1:20)))
 
-wrapper <- wrapperGenerator("knn", resamplingParams, fittingParams)
+wra <- wrapperEvaluator("knn", resamplingParams, fittingParams)
 
-measures <- list(IEConsistency, mutualInformation, wrapper)
+measures <- list(IEConsistency(), mutualInformation(), wra)
 ```

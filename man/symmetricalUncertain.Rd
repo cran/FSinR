@@ -4,31 +4,29 @@
 \alias{symmetricalUncertain}
 \title{Symmetrical uncertain measure}
 \usage{
-symmetricalUncertain(data, class, features)
-}
-\arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples.  Feature columns are expected to be factors, as all features should be discrete.
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{features}{\itemize{
-\item The names of the selected features
-}}
+symmetricalUncertain()
 }
 \value{
-\itemize{
-\item The symmetrical uncertain value for the selected features
-}
+Returns a function that is used to generate an evaluation set measure using the symmetrical uncertain value for the selected features.
 }
 \description{
-This measure calculates the symmetrical uncertain value \insertCite{WittenFrank2005}{FSinR}, using the information theory.
+Generates an evaluation function that calculates the symmetrical uncertain value \insertCite{WittenFrank2005}{FSinR}, using the information theory (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-symmetricalUncertain(iris,'Species',c('Sepal.Width', 'Sepal.Length'))
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly to evaluate a set of features
+## Classification problem
+
+# A discrete dataset is used (in this case we use only several discrete columns)
+adult <- adult[,c(4,9,10,15)]
+
+# Generate the evaluation function with Symmetrical Uncertain
+su_evaluator <- symmetricalUncertain()
+# Evaluate the features (parameters: dataset, target variable and features)
+su_evaluator(adult,'income',c('race','sex','education'))
+}
 }
 \references{
 \insertAllCited{}

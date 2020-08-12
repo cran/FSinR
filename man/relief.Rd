@@ -4,21 +4,9 @@
 \alias{relief}
 \title{Relief}
 \usage{
-relief(data, class, features, neighbours.count = 5, sample.size = 10)
+relief(neighbours.count = 5, sample.size = 10)
 }
 \arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{features}{\itemize{
-\item The feature or features to evalute individually
-}}
-
 \item{neighbours.count}{\itemize{
 \item number of neighbours to find for every sampled instance
 }}
@@ -28,12 +16,10 @@ relief(data, class, features, neighbours.count = 5, sample.size = 10)
 }}
 }
 \value{
-\itemize{
-\item a data.frame containing the worth of attributes in the first column and their names as row names
-}
+Returns a function that is used to generate an individual evaluation measure using relief
 }
 \description{
-The relief algorithm \insertCite{Kira1992}{FSinR} finds weights of continous and discrete attributes basing on a distance between instances. Adapted from Piotr Romanski's Fselector package \insertCite{FSelectorPkg}{FSinR}.
+Generates an evaluation function that calculates a measure of the set of features with relief (individual measure). The relief algorithm \insertCite{Kira1992}{FSinR} finds weights of continous and discrete attributes basing on a distance between instances. Adapted from Piotr Romanski's Fselector package \insertCite{FSelectorPkg}{FSinR}. This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \details{
 relief
@@ -41,7 +27,17 @@ classification and regression
 continous and discrete data
 }
 \examples{
-relief(iris, 'Species', c('Sepal.Width', 'Sepal.Length'))
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly to individually evaluate a set of features
+## Classification problem
+
+# Generate the evaluation function with Cramer
+relief_evaluator <- relief()
+# Evaluate the features (parameters: dataset, target variable and features)
+relief_evaluator(iris,'Species',c('Sepal.Length'))
+}
 }
 \references{
 \insertAllCited{}

@@ -1,30 +1,30 @@
 resamplingParams <- list(method = "cv", number = 5)
-fittingParams <- list(preProc = c("center", "scale"), metric = "Accuracy", tuneGrid = expand.grid(k = seq(1, 10, by = 2))) 
-wrapper <- wrapperGenerator("knn",resamplingParams, fittingParams) # wrapper method
-measures <- list(binaryConsistency, IEConsistency, IEPConsistency, roughsetConsistency, giniIndex, mutualInformation, gainRatio, symmetricalUncertain, determinationCoefficient, MDLC, RFSM, wrapper)
+fittingParams <- list(preProc = c("center", "scale"), metric = "Accuracy", tuneGrid = expand.grid(k = seq(1, 10, by = 2)))
+wra <- wrapperEvaluator("knn",resamplingParams, fittingParams) # wrapper method
+measures <- list(binaryConsistency(), IEConsistency(), IEPConsistency(), roughsetConsistency(), giniIndex(), mutualInformation(), gainRatio(), symmetricalUncertain(), determinationCoefficient(), MDLC(), ReliefFeatureSetMeasure(), wra)
 
 methods <- list(
-  list(method = sfs,
+  list(method = sequentialForwardSelection(),
        name = 'SFS'),
-  list(method = sbs,
+  list(method = sequentialBackwardSelection(),
        name = 'SBS'),
-  list(method = sffs,
+  list(method = sequentialFloatingForwardSelection(),
        name = 'SFFS'),
-  list(method = sfbs,
+  list(method = sequentialFloatingBackwardSelection(),
        name = 'SFBS'),
-  list(method = lvw,
+  list(method = LasVegas(),
        name = 'LVW'),
-  list(method = ga,
+  list(method = geneticAlgorithm(),
        name = 'GA'),
-  list(method = sa,
+  list(method = simulatedAnnealing(),
        name = 'SA'),
-  list(method = woa,
+  list(method = whaleOptimization(),
        name = 'WOA'),
-  list(method = aco,
+  list(method = antColony(),
        name = 'ACO'),
-  list(method = ts,
+  list(method = tabu(),
        name = 'TS'),
-  list(method = hc,
+  list(method = hillClimbing(),
        name = 'HC')
 )
 for (method in methods) {

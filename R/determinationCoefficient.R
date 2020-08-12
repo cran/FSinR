@@ -1,14 +1,9 @@
 # Measures for regression problems, where the class is continous
-#' @importFrom Rdpack reprompt
-
 #' @author Adan M. Rodriguez
 #' @title R Squared, to continous features
-#' @description This measure calculates the determinantion coefficient \insertCite{rsquared}{FSinR} of continuous features
-#' @param data - A data frame with the features and the class of the examples
-#' @param class - The name of the dependent variable
-#' @param features - The names of the selected features
+#' @description Generates an evaluation function that calculates the determinantion coefficient \insertCite{rsquared}{FSinR} of continuous features (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 #'
-#' @return - The R squared value for the selected features
+#' @return Returns a function that is used to generate an evaluation set measure using the R squared value for the selected features.
 #' @references
 #'    \insertAllCited{}
 #' @importFrom Rdpack reprompt
@@ -17,24 +12,39 @@
 #' @export
 #'
 #' @examples
-#' determinationCoefficient(iris,'Species',c('Sepal.Width', 'Sepal.Length'))
-determinationCoefficient <- function(data, class, features) {
-  # Create the formula formed with the features and the class
-  #data2$class <- as.numeric(as.character(data2$class))
-  data2 = data
-  data2[,class] <- as.numeric(data2[,class]) # fix to transform factor to numeric
-  formula <- as.formula(paste(class, "~", paste(features, collapse="+")))
+#'\dontrun{ 
+#'
+#' ## The direct application of this function is an advanced use that consists of using this 
+#' # function directly to evaluate a set of features
+#' ## Classification problem
+#' 
+#' # Generate the evaluation function with Determination Coefficient
+#' dc_evaluator <- determinationCoefficient()
+#' # Evaluate the features (parameters: dataset, target variable and features)
+#' dc_evaluator(longley, 'Employed', c('GNP', 'Population','Year'))
+#' }
+determinationCoefficient <- function() {
+  
+  determinationCoefficientEvaluator <- function(data, class, features) {
+    # Create the formula formed with the features and the class
+    #data2$class <- as.numeric(as.character(data2$class))
+    formula <- as.formula(paste(class, "~", paste(features, collapse = "+")))
+    
+    # Fit the linear model
+    model <- lm(formula = formula, data = data)
+    
+    # Take the measure
+    value <- suppressWarnings(summary(model)$r.squared)
+    
+    return(value)
+  }
 
-  # Fit the linear model
-  model <- lm(formula = formula, data = data2)
-
-  # Take the measure
-  value <- summary(model)$r.squared
-
-  return(value)
+  attr(determinationCoefficientEvaluator,'shortName') <- "determinationCoefficient"
+  attr(determinationCoefficientEvaluator,'name') <- "Determination Coefficient"
+  attr(determinationCoefficientEvaluator,'target') <- "maximize"
+  attr(determinationCoefficientEvaluator,'kind') <- "Set measure"
+  attr(determinationCoefficientEvaluator,'needsDataToBeDiscrete') <- FALSE
+  attr(determinationCoefficientEvaluator,'needsDataToBeContinuous') <- FALSE
+  
+  return(determinationCoefficientEvaluator)
 }
-suppressWarnings(warning("In summary.lm(model) : essentially perfect fit: summary may be unreliable"))
-attr(determinationCoefficient,'shortName') <- "determinationCoefficient"
-attr(determinationCoefficient,'name') <- "Determination Coefficient"
-attr(determinationCoefficient,'maximize') <- TRUE
-attr(determinationCoefficient,'kind') <- "Set measure"

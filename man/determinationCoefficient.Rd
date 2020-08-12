@@ -4,31 +4,26 @@
 \alias{determinationCoefficient}
 \title{R Squared, to continous features}
 \usage{
-determinationCoefficient(data, class, features)
-}
-\arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{features}{\itemize{
-\item The names of the selected features
-}}
+determinationCoefficient()
 }
 \value{
-\itemize{
-\item The R squared value for the selected features
-}
+Returns a function that is used to generate an evaluation set measure using the R squared value for the selected features.
 }
 \description{
-This measure calculates the determinantion coefficient \insertCite{rsquared}{FSinR} of continuous features
+Generates an evaluation function that calculates the determinantion coefficient \insertCite{rsquared}{FSinR} of continuous features (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-determinationCoefficient(iris,'Species',c('Sepal.Width', 'Sepal.Length'))
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly to evaluate a set of features
+## Classification problem
+
+# Generate the evaluation function with Determination Coefficient
+dc_evaluator <- determinationCoefficient()
+# Evaluate the features (parameters: dataset, target variable and features)
+dc_evaluator(longley, 'Employed', c('GNP', 'Population','Year'))
+}
 }
 \references{
 \insertAllCited{}

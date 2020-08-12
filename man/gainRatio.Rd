@@ -4,31 +4,29 @@
 \alias{gainRatio}
 \title{The gain ratio measure}
 \usage{
-gainRatio(data, class, features)
-}
-\arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples.  Feature columns are expected to be factors, as all features should be discrete.
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{features}{\itemize{
-\item The names of the selected features
-}}
+gainRatio()
 }
 \value{
-\itemize{
-\item The gain ratio value for the selected features.
-}
+Returns a function that is used to generate an evaluation set measure using the gain ratio value for the selected features.
 }
 \description{
-This measure calculates the gain ratio value \insertCite{Quinlan1986}{FSinR}, using the information theory.
+Generates an evaluation function that calculates the gain ratio value \insertCite{Quinlan1986}{FSinR}, using the information theory (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-gainRatio(iris,'Species',c('Sepal.Width', 'Sepal.Length'))
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly to evaluate a set of features
+## Classification problem
+
+# A discrete dataset is used (in this case we use only several discrete columns)
+adult <- adult[,c(4,9,10,15)]
+
+# Generate the evaluation function with Cramer
+gr_evaluator <- gainRatio()
+# Evaluate the features (parameters: dataset, target variable and features)
+gr_evaluator(adult,'income',c('race','sex','education'))
+}
 }
 \references{
 \insertAllCited{}

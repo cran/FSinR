@@ -4,31 +4,29 @@
 \alias{MDLC}
 \title{MDLC evaluation measure}
 \usage{
-MDLC(data, class, features)
-}
-\arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{features}{\itemize{
-\item The names of the selected features
-}}
+MDLC()
 }
 \value{
-\itemize{
-\item MDLC value for the selected features
-}
+Returns a function that is used to generate an evaluation set measure using MDLC value for the selected features
 }
 \description{
-Applies the Minimum-Description_Length-Criterion (MDLC) \insertCite{Sheinvald1990}{FSinR} to evaluate a set of features.
+Generates an evaluation function that applies the Minimum-Description_Length-Criterion (MDLC) \insertCite{Sheinvald1990}{FSinR} to generate an evaluation measure for a set of features (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-MDLC(iris,'Species',c('Sepal.Width', 'Sepal.Length'))
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly to evaluate a set of features
+## Classification problem
+
+# A discrete dataset is used (in this case we use only several discrete columns)
+adult <- adult[,c(4,9,10,15)]
+
+# Generate the evaluation function with MDLC
+MDLC_evaluator <- MDLC()
+# Evaluate the features (parameters: dataset, target variable and features)
+MDLC_evaluator(adult,'income',c('race','sex','education'))
+}
 }
 \references{
 \insertAllCited{}

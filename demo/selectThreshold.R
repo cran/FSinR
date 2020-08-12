@@ -1,23 +1,14 @@
-## Select Threshold for iris dataset (filter method)
-# Features with a evaluation measure higher than 0.7
-selectThreshold(iris, 'Species', mutualInformation, 0.7)
+## The direct application of this function is an advanced use that consists of using this 
+# function directly and performing a direct search process
+## Classification problem
+ 
+ 
+ # Generates the filter evaluation function
+filter_evaluator <- filterEvaluator('determinationCoefficient')
+ 
+# Generates the direct search function with threshold
+st_direct_search <- selectThreshold()
+# Performs the direct search process directly (parameters: dataset, target variable and evaluator)
+res <- st_direct_search(iris, 'Species', filter_evaluator) 
 
-## Select Threshold for mtcars dataset (filter method)
-# Features with a evaluation measure fewer than 20
-selectThreshold(mtcars, 'mpg', mutualInformation, 20.0)
-
-## Select Threshold for iris dataset (wrapper classification)
-resamplingParams <- list(method = "cv", number = 10) # Values for the caret trainControl function
-# Values for the caret train function (x, y, method and trainControl not neccesary)
-fittingParams <- list(preProc = c("center", "scale"), metric="Accuracy",
-                      tuneGrid = expand.grid(k = c(1:20)))
-wrapper <- wrapperGenerator("knn", resamplingParams, fittingParams) # wrapper method
-selectThreshold(iris, 'Species', wrapper, 0.7) # Features with a evaluation measure higher than 0.7
-
-## Select Threshold for mtcars dataset (wrapper regression)
-resamplingParams <- list(method = "cv", number = 10) # Values for the caret trainControl function
-# Values for the caret train function (x, y, method and trainControl not neccesary)
-fittingParams <- list(preProc = c("center", "scale"), metric="RMSE",
-                      tuneGrid = expand.grid(size = seq(1,12,by=2), decay=0), trace=FALSE)
-wrapper <- wrapperGenerator("nnet",resamplingParams, fittingParams) # wrapper method
-selectThreshold(mtcars, 'mpg', wrapper, 20.0) # Features with a evaluation measure fewer than 20
+print(res)

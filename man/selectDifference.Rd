@@ -4,40 +4,35 @@
 \alias{selectDifference}
 \title{Select difference}
 \usage{
-selectDifference(data, class, featureEval, d.threshold = 0.1)
+selectDifference(d.threshold = 0.2)
 }
 \arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{featureEval}{\itemize{
-\item The measure used to evaluate features
-}}
-
 \item{d.threshold}{\itemize{
 \item Number between 0 and 1, to calculate the slope
 }}
 }
 \value{
-A list is returned containing:
-\describe{
-\item{bestFeatures}{A vector with all features. Selected features are marked with 1, unselected features are marked with 0}
-\item{featuresSelected}{The names of the returned features sorted according to the result of the evaluation measure}
-\item{valuePerFeature}{The evaluation measures of the returned features}
-}
+Returns a direct search function that is used in the feature selection process.
 }
 \description{
-Selects features (in descending order from the best evaluation measure to the lowest) until evaluation difference is over a threshold.
+Generates a direct search function that selects features (in descending order from the best evaluation measure to the lowest) until evaluation difference is over a threshold (The features evaluation is individual). This function is called internally within the \code{\link{directSearchAlgorithm}} function.
 }
 \examples{
-## Select Difference for iris dataset (filter method)
-# Selects features in descending order as long as the difference between them is less than 0.1
-selectDifference(iris, 'Species', chiSquared, 0.1) 
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly and performing a direct search process
+## Classification problem
+
+
+# Generates the filter evaluation function
+filter_evaluator <- filterEvaluator('determinationCoefficient')
+
+# Generates the direct search function with difference
+sd_direct_search <- selectDifference()
+# Performs the direct search process directly (parameters: dataset, target variable and evaluator)
+sd_direct_search(iris, 'Species', filter_evaluator)
+}
 }
 \author{
 Adan M. Rodriguez

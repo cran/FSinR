@@ -13,44 +13,85 @@ library(FSinR)
 
 data(iris)
 
-## ---- 'Generate wrapper'------------------------------------------------------
-resamplingParams <- list(method = "cv", number = 10)
-fittingParams <- list(preProc = c("center", "scale"), metric="Accuracy", tuneGrid = expand.grid(k = c(1:20)))
+## ---- 'Generate Evaluator (S+W)'----------------------------------------------
+evaluator <- wrapperEvaluator("knn")
 
-wrapper <- wrapperGenerator("knn", resamplingParams, fittingParams)
+## ---- 'Generate searcher (S+W)'-----------------------------------------------
+searcher <- searchAlgorithm('sequentialForwardSelection')
 
-## ---- 'Use wrapper with SFS'--------------------------------------------------
-result.search.fs <- sfs(iris, "Species", wrapper)
+## ---- 'Feature Selection (S+W)'-----------------------------------------------
+results <- featureSelection(iris, 'Species', searcher, evaluator)
 
-## ----eval=FALSE, 'Use wrapper with TS'----------------------------------------
-#  result.search.fs <- ts(iris, 'Species', wrapper)
+## ---- 'Results (S+W)'---------------------------------------------------------
+results$bestFeatures
+results$bestValue
 
-## ----eval=FALSE, 'Use wrapper with customized TS'-----------------------------
-#  result.search.fs <- ts(iris, 'Species', wrapper, tamTabuList = 4, iter = 5, intensification=2, iterIntensification=5, diversification=1, iterDiversification=5, verbose=FALSE)
-
-## ---- 'Check results'---------------------------------------------------------
-result.search.fs$bestFeatures
-result.search.fs$bestFitness
-
-## ----eval=FALSE, 'Use wrapper as measure'-------------------------------------
-#  wrapperMeasure <- wrapper(iris,"Species",c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
-#  wrapperMeasure
-
-## ----message=FALSE, eval=FALSE, 'Load data for filtering'---------------------
-#  library(FSinR)
+## ----eval=FALSE, 'Generate wrapper (S+W) 2'-----------------------------------
+#  resamplingParams <- list(method = "cv", number = 10)
+#  fittingParams <- list(preProc = c("center", "scale"), metric="Accuracy", tuneGrid = expand.grid(k = c(1:20)))
 #  
-#  data(iris)
+#  evaluator <- wrapperEvaluator("knn", resamplingParams, fittingParams)
 
-## ---- 'Use filter method'-----------------------------------------------------
-result.search.fs <- sfs(iris, "Species", giniIndex)
+## ----eval=FALSE, 'Search generator (W+S) 2'-----------------------------------
+#  searcher <- searchAlgorithm('tabu', list(tamTabuList = 4, iter = 5, intensification=2, iterIntensification=5, diversification=1, iterDiversification=5, verbose=FALSE) )
 
-## ---- 'Check filter results'--------------------------------------------------
-result.search.fs
+## ----eval=FALSE, 'Feature Selection (S+W) 2'----------------------------------
+#  results <- featureSelection(iris, 'Species', searcher, evaluator)
 
-## ---- 'Use filter measure'----------------------------------------------------
-filterMeasure <- giniIndex(iris, "Species", c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+## ---- 'Generate Evaluator (S+F)'----------------------------------------------
+evaluator <- filterEvaluator('MDLC')
 
-## ---- eval=FALSE, 'Apply filter to regression'--------------------------------
-#  result.search.fs <- sfs(mtcars, "mpg", giniIndex)
-#  result.search.fs
+## ---- 'Generate searcher (S+F)'-----------------------------------------------
+searcher <- searchAlgorithm('sequentialForwardSelection')
+
+## ---- 'Feature Selection (S+F)'-----------------------------------------------
+results <- featureSelection(iris, 'Species', searcher, evaluator)
+
+## ---- 'Results (S+F)'---------------------------------------------------------
+results$bestFeatures
+results$bestValue
+
+## ---- 'Generate Evaluator (F/W)'----------------------------------------------
+filter_evaluator <- filterEvaluator("IEConsistency")
+
+wrapper_evaluator <- wrapperEvaluator("lvq")
+
+## ---- 'Results (F/W)'---------------------------------------------------------
+resultFilter <- filter_evaluator(iris, 'Species', c("Sepal.Length", "Sepal.Width",  "Petal.Length", "Petal.Width"))
+resultFilter
+
+resultWrapper <- wrapper_evaluator(iris, 'Species', c("Petal.Length", "Petal.Width"))
+resultWrapper
+
+## ----'DFS'--------------------------------------------------------------------
+library(caret)
+library(FSinR)
+
+data(mtcars)
+
+
+evaluator <- filterEvaluator('determinationCoefficient')
+
+directSearcher <- directSearchAlgorithm('selectKBest', list(k=3))
+
+results <- directFeatureSelection(mtcars, 'mpg', directSearcher, evaluator)
+results$bestFeatures
+results$featuresSelected
+results$valuePerFeature
+
+## ----'HFS'--------------------------------------------------------------------
+library(caret)
+library(FSinR)
+
+data(mtcars)
+
+
+evaluator_1 <- filterEvaluator('determinationCoefficient')
+evaluator_2 <- filterEvaluator('ReliefFeatureSetMeasure')
+
+hybridSearcher <- hybridSearchAlgorithm('LCC')
+
+results <- hybridFeatureSelection(mtcars, 'mpg', hybridSearcher, evaluator_1, evaluator_2)
+results$bestFeatures
+results$bestValue
 

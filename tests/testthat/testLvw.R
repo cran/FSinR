@@ -1,6 +1,6 @@
-context("Las Vegas Wrapper")
+context("Las Vegas")
 
 test_that("Name is set", {
-  expect_equal(attr(lvw,'name'),"Las Vegas Wrapper");
-  expect_equal(attr(lvw,'shortName'),"lvw");
+  expect_equal(attr(LasVegas(),'name'),"Las Vegas");
+  expect_equal(attr(LasVegas(),'shortName'),"lv");
 })

@@ -4,31 +4,29 @@
 \alias{giniIndex}
 \title{Gini index measure}
 \usage{
-giniIndex(data, class, features)
-}
-\arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{features}{\itemize{
-\item The names of the selected feature
-}}
+giniIndex()
 }
 \value{
-\itemize{
-\item The Gini index value for the selected features
-}
+Returns a function that is used to generate an evaluation set measure using the Gini index value for the selected features.
 }
 \description{
-This measure calculates the gini index \insertCite{Ceriani2012}{FSinR} of discrete features
+Generates an evaluation function that calculates the gini index \insertCite{Ceriani2012}{FSinR} of discrete features (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-giniIndex(iris,'Species',c('Sepal.Width', 'Sepal.Length'))
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly to evaluate a set of features
+## Classification problem
+
+# A discrete dataset is used (in this case we use only several discrete columns)
+adult <- adult[,c(4,9,10,15)]
+
+# Generate the evaluation function with Gini index
+giniIndex_evaluator <- giniIndex()
+# Evaluate the features (parameters: dataset, target variable and features)
+giniIndex_evaluator(adult,'income',c('race','sex','education'))
+}
 }
 \references{
 \insertAllCited{}

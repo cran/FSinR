@@ -7,20 +7,20 @@ comment = "#>"
 ## ---- 'Simple'----------------------------------------------------------------
 library(FSinR)
 
-sfs(iris, 'Species', IEConsistency)
-sfs(iris, 'Species', mutualInformation)
+sequentialForwardSelection()(iris, 'Species', IEConsistency())
+sequentialForwardSelection()(iris, 'Species', mutualInformation())
 
 ## ---- 'List of measures'------------------------------------------------------
-measures <- list(IEConsistency, mutualInformation)
+measures <- list(IEConsistency(), mutualInformation())
 for (measure in measures) {
-  result <- sfs(iris, 'Species', measure)
+  result <- sequentialForwardSelection()(iris, 'Species', measure)
   print(attr(measure,'name'))
   print(result$bestFeatures)
 }
 
 ## ---- 'List of algorithms'----------------------------------------------------
-measures <- list(IEConsistency, mutualInformation)
-algorithms <- list(sfs, lvw)
+measures <- list(IEConsistency(), mutualInformation())
+algorithms <- list(sequentialForwardSelection(), LasVegas())
 for (algorithm in algorithms) {
   for (measure in measures) {
     result <- algorithm(iris, 'Species', measure)
@@ -34,7 +34,7 @@ for (algorithm in algorithms) {
 resamplingParams <- list(method = "cv", number = 10)
 fittingParams <- list(preProc = c("center", "scale"), metric = "Accuracy", tuneGrid = expand.grid(k = c(1:20)))
 
-wrapper <- wrapperGenerator("knn", resamplingParams, fittingParams)
+wra <- wrapperEvaluator("knn", resamplingParams, fittingParams)
 
-measures <- list(IEConsistency, mutualInformation, wrapper)
+measures <- list(IEConsistency(), mutualInformation(), wra)
 

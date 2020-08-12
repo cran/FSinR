@@ -4,39 +4,35 @@
 \alias{selectSlope}
 \title{Select slope}
 \usage{
-selectSlope(data, class, featureEval, s.threshold = 0.8)
+selectSlope(s.threshold = 1.5)
 }
 \arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{featureEval}{\itemize{
-\item The measure used to evaluate features
-}}
-
 \item{s.threshold}{\itemize{
 \item Number between 0 and 1
 }}
 }
 \value{
-A list is returned containing:
-\describe{
-\item{bestFeatures}{A vector with all features. Selected features are marked with 1, unselected features are marked with 0}
-\item{featuresSelected}{The names of the returned features sorted according to the result of the evaluation measure}
-\item{valuePerFeature}{The evaluation measures of the returned features}
-}
+Returns a direct search function that is used in the feature selection process.
 }
 \description{
-Selects features (in descending order from the best evaluation measure to the lowest) until the slope to the next feature is over a threshold. The slope is calculated as: (s.threshold) / (number of features)
+Generates a direct search function that selects features (in descending order from the best evaluation measure to the lowest) until the slope to the next feature is over a threshold (The features evaluation is individual). The slope is calculated as: (s.threshold) / (number of features). This function is called internally within the \code{\link{directSearchAlgorithm}} function.
 }
 \examples{
-## Select Slope for iris dataset (filter method)
-selectSlope(iris, 'Species', IEPConsistency, 0.8)
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly and performing a direct search process
+## Classification problem
+
+
+# Generates the filter evaluation function
+filter_evaluator <- filterEvaluator('determinationCoefficient')
+
+# Generates the direct search function with slope
+ss_direct_search <- selectSlope()
+# Performs the direct search process directly (parameters: dataset, target variable and evaluator)
+ss_direct_search(iris, 'Species', filter_evaluator)
+}
 }
 \author{
 Adan M. Rodriguez

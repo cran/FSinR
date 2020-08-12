@@ -4,31 +4,29 @@
 \alias{binaryConsistency}
 \title{Binary consistency measure}
 \usage{
-binaryConsistency(data, class, features)
-}
-\arguments{
-\item{data}{\itemize{
-\item A data frame with the features and the class of the examples. Feature columns are expected to be factors, as all features should be discrete.
-}}
-
-\item{class}{\itemize{
-\item The name of the dependent variable
-}}
-
-\item{features}{\itemize{
-\item The names of the selected features
-}}
+binaryConsistency()
 }
 \value{
-\itemize{
-\item The consistency value for the selected features
-}
+Returns a function that is used to generate an evaluation set measure using the binary consistency value for the selected features.
 }
 \description{
-Calculates the binary consistency, also known as "Sufficiency test" from FOCUS \insertCite{AlmuallimDietterich1991}{FSinR}
+Generates an evaluation function that calculates the binary consistency, also known as "Sufficiency test" from FOCUS \insertCite{AlmuallimDietterich1991}{FSinR} (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-binaryConsistency(iris,'Species',c('Sepal.Width', 'Sepal.Length'))
+\dontrun{ 
+
+## The direct application of this function is an advanced use that consists of using this 
+# function directly to evaluate a set of features
+## Classification problem
+
+# A discrete dataset is used (in this case we use only several discrete columns)
+adult <- adult[,c(4,9,10,15)]
+
+# Generate the evaluation function with Binary Consistency
+bc_evaluator <- binaryConsistency()
+# Evaluate the features (parameters: dataset, target variable and features)
+bc_evaluator(adult,'income',c('race','sex','education'))
+}
 }
 \references{
 \insertAllCited{}
