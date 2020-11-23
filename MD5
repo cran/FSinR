@@ -1,4 +1,4 @@
-08c4dc96a6d6ec7d0cdd770abab80616 *DESCRIPTION
+31f8cd8596a635b75f6751eb444cfa32 *DESCRIPTION
 52497f45e928163e91f45bf93af7f248 *NAMESPACE
 fd0a7a80b48b8962c618cbd706998918 *R/Jd.R
 3be0d34c4da2e3878bd9fb9157f43295 *R/LCC.R
@@ -27,7 +27,7 @@ ad08f998915883b813d04f774dd74aa3 *R/relief.R
 5faadbf1bf9f5f9fd190bae3d7bb4c1e *R/selectIndividualFeatures.R
 5c97c79e11d22d42062fb2245658063b *R/sequentialSelection.R
 e5d876e12464e6daabdce34817387c12 *R/wrapperGenerator.R
-5ef633f805bd68ae45b22a5b59713ccd *build/partial.rdb
+8f7d9718ed6cc9ead3885d38243dd750 *build/partial.rdb
 6505ee6e8709110d38163b9d9f5e756d *build/vignette.rds
 8693159a1bc3d53b8c8e25c009321faa *demo/00Index
 5b87068fcd949a8283d927cc9e9af7ed *demo/LCC.R
@@ -58,10 +58,10 @@ f622fea90ea3db255bf915ba1a3f8b7f *demo/wrapperGenerator.R
 1da269d5a66977ca56e4d5954f32ff28 *inst/REFERENCES.bib
 7ba814ec732b2fb445c268847066a998 *inst/doc/FSinR.R
 55d369541269741ecae8677c01a37404 *inst/doc/FSinR.Rmd
-6e1505fffcfd364c01e83c90f04fadeb *inst/doc/FSinR.html
+379b1f848340504ebc5e99a10daa92b7 *inst/doc/FSinR.html
 5f89376398cb04525e20be52024d09db *inst/doc/methods.R
 a49fce449ad9e1e74e57fed3b0f9ceee *inst/doc/methods.Rmd
-9a884dad839415fc966a5806fd7b2a96 *inst/doc/methods.html
+d9e02dddf597b9f9be9c6180ac06e697 *inst/doc/methods.html
 b69134a669905cc4fdb558c8c52a4de6 *inst/methods.Rmd
 340accfabd19193364b9ee51bc9c8c15 *man/IEConsistency.Rd
 663bf2c797087ebe16995736a7bb4816 *man/IEPConsistency.Rd
@@ -163,7 +163,7 @@ dde1d5b39bfde8c369783ab5f54a3926 *tests/testthat/testSelectDifference.R
 cd98ea2e3d3ada0b196e4af851440c9c *tests/testthat/testSelectSlope.R
 da1c03c217c561ca3d2febff50a3ae0f *tests/testthat/testSelectThreshold.R
 eddf4399280d3fbe95791424888abc03 *tests/testthat/testSelectThresholdRange.R
-fadc70a4d872ed861cf50f58de47ddcf *tests/testthat/testSetFSSearchAlgorithmInterface.R
+9a1e8241aa1095450f7af0fc48758601 *tests/testthat/testSetFSSearchAlgorithmInterface.R
 2d3a237bb6bcff821c261d5accaccd87 *tests/testthat/testSymmetricalUncertain.R
 37c661a7d95faa9e5e302210359faf42 *tests/testthat/testTs.R
 1bf5b8e77e2c99b62f149c73125f0122 *tests/testthat/testWoa.R

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Francisco Aragón Royón" />
 
-<meta name="date" content="2020-08-12" />
+<meta name="date" content="2020-11-16" />
 
 <title>A Short Introduction to the FSinR Package</title>
 
@@ -32,6 +32,54 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+<style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+a.anchor-section::before {content: '#';}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+</style>
+<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
+document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
+  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  // Do nothing if sections are already anchored
+  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
+    return null;
+  }
+
+  // Use section id when pandoc runs with --section-divs
+  const section_id = function(x) {
+    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
+            ? x.id : '');
+  };
+
+  // Add anchors
+  h.forEach(function(x) {
+    const id = x.id || section_id(x.parentElement);
+    if (id === '') {
+      return null;
+    }
+    let anchor = document.createElement('a');
+    anchor.href = '#' + id;
+    anchor.classList = ['anchor-section'];
+    x.classList.add('hasAnchor');
+    x.appendChild(anchor);
+  });
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -319,7 +367,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">A Short Introduction to the FSinR Package</h1>
 <h4 class="author">Francisco Aragón Royón</h4>
-<h4 class="date">2020-08-12</h4>
+<h4 class="date">2020-11-16</h4>
 
 
 
@@ -424,9 +472,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>The results show the best subset of features found and its evaluation.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>results<span class="op">$</span>bestFeatures</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt;      Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; [1,]            1           1            1           1</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; [1,]            0           0            0           1</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a>results<span class="op">$</span>bestValue</span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt; [1] 0.9529034</span></span></code></pre></div>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt; [1] 0.9575654</span></span></code></pre></div>
 <p>The above example illustrates a simple use of the package, but this can also be more complex if you intend to establish certain parameters. Regarding the wrapper method, it is possible to tune the model parameters. In the first instance, you can establish the resampling parameters, which are the same arguments that are passed to the <code>trainControl</code> function of the caret package. Secondly, you can establish the fitting parameters, which are the same as for the caret <code>train</code> function.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>resamplingParams &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dt">number =</span> <span class="dv">10</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a>fittingParams &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">preProc =</span> <span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>), <span class="dt">metric=</span><span class="st">&quot;Accuracy&quot;</span>, <span class="dt">tuneGrid =</span> <span class="kw">expand.grid</span>(<span class="dt">k =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>)))</span>
@@ -471,7 +519,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb15-6"><a href="#cb15-6"></a></span>
 <span id="cb15-7"><a href="#cb15-7"></a>resultWrapper &lt;-<span class="st"> </span><span class="kw">wrapper_evaluator</span>(iris, <span class="st">&#39;Species&#39;</span>, <span class="kw">c</span>(<span class="st">&quot;Petal.Length&quot;</span>, <span class="st">&quot;Petal.Width&quot;</span>))</span>
 <span id="cb15-8"><a href="#cb15-8"></a>resultWrapper</span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="co">#&gt; [1] 0.9617584</span></span></code></pre></div>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">#&gt; [1] 0.9548126</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -559,7 +607,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb17-14"><a href="#cb17-14"></a><span class="co">#&gt;      cyl disp hp drat wt qsec vs am gear carb</span></span>
 <span id="cb17-15"><a href="#cb17-15"></a><span class="co">#&gt; [1,]   1    1  1    1  1    1  1  1    1    1</span></span>
 <span id="cb17-16"><a href="#cb17-16"></a>results<span class="op">$</span>bestValue</span>
-<span id="cb17-17"><a href="#cb17-17"></a><span class="co">#&gt; [1] -0.09486607</span></span></code></pre></div>
+<span id="cb17-17"><a href="#cb17-17"></a><span class="co">#&gt; [1] 0.0171875</span></span></code></pre></div>
 </div>
 </div>
 
