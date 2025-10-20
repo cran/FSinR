@@ -40,7 +40,7 @@ A list is returned with the results of the hybrid feature selection process:
 Performs the hybrid feature selection process. Given a hybrid search algorithm and an two evaluation methods, it uses the hybrid search algorithm in combination with the evaluation results to guide the feature selection process to an optimal subset.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## Examples of the hybrid feature selection process
 ## Classification problem with filter

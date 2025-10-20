@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to individually evaluate a set of features
@@ -96,7 +96,7 @@ cramer <- function() {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to individually evaluate a set of features

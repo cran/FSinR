@@ -33,14 +33,14 @@ Returns a search function that is used to guide the feature selection process.
 Generates a search function based on a genetic algorithm. This function is called internally within the \code{\link{searchAlgorithm}} function. The geneticAlgorithm method \insertCite{yang1998feature}{FSinR} starts with an initial population of solutions and at each step applies a series of operators to the individuals in order to obtain new and better population of individuals. These operators are selection, crossing and mutation methods. This method uses the GA package implementation \insertCite{GAPkg1}{FSinR} \insertCite{GAPkg2}{FSinR}.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a search process in a feature space
 ## Classification problem
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the search function with Genetic algorithm
 ga_search <- geneticAlgorithm()

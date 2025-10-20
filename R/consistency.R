@@ -14,19 +14,22 @@ library(digest)
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features
 #' ## Classification problem
 #' 
+#' data("Titanic")
+#' titanic <- as.data.frame(Titanic)
+#' 
 #' # A discrete dataset is used (in this case we use only several discrete columns)
-#' adult <- adult[,c(4,9,10,15)]
+#' titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
 #' 
 #' # Generate the evaluation function with Rough Set Consistency
 #' rsc_evaluator <- roughsetConsistency()
 #' # Evaluate the features (parameters: dataset, target variable and features)
-#' rsc_evaluator(adult,'income',c('race','sex','education'))
+#' rsc_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 #' }
 roughsetConsistency <- function() {
   
@@ -82,19 +85,22 @@ roughsetConsistency <- function() {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features
 #' ## Classification problem
 #' 
+#' data("Titanic")
+#' titanic <- as.data.frame(Titanic)
+#' 
 #' # A discrete dataset is used (in this case we use only several discrete columns)
-#' adult <- adult[,c(4,9,10,15)]
+#' titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
 #' 
 #' # Generate the evaluation function with Binary Consistency
 #' bc_evaluator <- binaryConsistency()
 #' # Evaluate the features (parameters: dataset, target variable and features)
-#' bc_evaluator(adult,'income',c('race','sex','education'))
+#' bc_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 #' }
 binaryConsistency <- function() {
   
@@ -135,19 +141,22 @@ binaryConsistency <- function() {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features
 #' ## Classification problem
 #' 
-#' # A discrete dataset is used (in this case we use only several discrete columns)
-#' adult <- adult[,c(4,9,10,15)]
+#' data("Titanic")
+#' titanic <- as.data.frame(Titanic)
 #' 
-#' # Generate the evaluation function with IE Consistency
+#' # A discrete dataset is used (in this case we use only several discrete columns)
+#' titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
+#' 
+#' # Generate the evaluation function with Binary Consistency
 #' IEC_evaluator <- IEConsistency()
 #' # Evaluate the features (parameters: dataset, target variable and features)
-#' IEC_evaluator(adult,'income',c('race','sex','education'))
+#' IEC_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 #' }
 IEConsistency <- function() {
   
@@ -197,19 +206,22 @@ IEConsistency <- function() {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features
 #' ## Classification problem
 #' 
-#' # A discrete dataset is used (in this case we use only several discrete columns)
-#' adult <- adult[,c(4,9,10,15)]
+#' data("Titanic")
+#' titanic <- as.data.frame(Titanic)
 #' 
-#' # Generate the evaluation function with IEP Consistency
+#' # A discrete dataset is used (in this case we use only several discrete columns)
+#' titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
+#' 
+#' # Generate the evaluation function with Binary Consistency
 #' IEPC_evaluator <- IEPConsistency()
 #' # Evaluate the features (parameters: dataset, target variable and features)
-#' IEPC_evaluator(adult,'income',c('race','sex','education'))
+#' IEPC_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 #' }
 IEPConsistency <- function() {
   

@@ -13,57 +13,61 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\dontrun{
 #'
-#' ## The direct application of this function is an advanced use that consists of using this 
+#' ## The direct application of this function is an advanced use that consists of using this
 #' # function directly to evaluate a set of features
 #' ## Classification problem
-#' 
+#'
 #' # Generate the evaluation function with JD
 #' Jd_evaluator <- Jd()
 #' # Evaluate the features (parametes: dataset, target variable and features)
 #' Jd_evaluator(ToothGrowth,'supp',c('len','dose'))
 #' }
 Jd <- function() {
-
   JdEvaluator <- function(data, class, features) {
     if (!length(features)) {
-      return(0);
+      return(0)
+      
     }
     
-    feature.classes <- unique(as.data.frame(data[,class,drop = FALSE]))
+    feature.classes <- unique(as.data.frame(data[, class, drop = FALSE]))
     if (nrow(feature.classes) != 2) {
-      stop('Data set is required to have only 2 classes');
+      stop('Data set is required to have only 2 classes')
+      
     }
+    
     
     vectors <- data %>%
-      select(features, class) %>%
-      group_by_at(class) %>%
-      summarise_at(features,list(mean)) %>%
-      select(features)
-    vector <- unlist(vectors[1,] - vectors[2,])
+      select(all_of(c(features, class))) %>%
+      group_by(across(all_of(class))) %>%
+      summarise(across(all_of(features), mean), .groups = "drop") %>%
+      select(all_of(features))
+    vector <- unlist(vectors[1, ] - vectors[2, ])
     
     matrixA  <- data %>%
-      filter(UQ(as.name(class)) == feature.classes[1,1]) %>%
-      select(features) %>%
+      filter(UQ(as.name(class)) == feature.classes[1, 1]) %>%
+      select(all_of(features)) %>%
       as.matrix() %>%
       cov()
     
     matrixB  <- data %>%
-      filter(UQ(as.name(class)) == feature.classes[2,1]) %>%
-      select(features) %>%
+      filter(UQ(as.name(class)) == feature.classes[2, 1]) %>%
+      select(all_of(features)) %>%
       as.matrix() %>%
       cov()
     
-    return (as.numeric(t(vector) %*% solve((matrixA + matrixB)/2) %*% vector))
+    return (as.numeric(t(vector) %*% solve((
+      matrixA + matrixB
+    ) / 2) %*% vector))
   }
   
-  attr(JdEvaluator,'shortName') <- "Jd"
-  attr(JdEvaluator,'name') <- "Jd"
-  attr(JdEvaluator,'target') <- "maximize"
-  attr(JdEvaluator,'kind') <- "Set measure"
-  attr(JdEvaluator,'needsDataToBeDiscrete') <- FALSE
-  attr(JdEvaluator,'needsDataToBeContinuous') <- FALSE
+  attr(JdEvaluator, 'shortName') <- "Jd"
+  attr(JdEvaluator, 'name') <- "Jd"
+  attr(JdEvaluator, 'target') <- "maximize"
+  attr(JdEvaluator, 'kind') <- "Set measure"
+  attr(JdEvaluator, 'needsDataToBeDiscrete') <- FALSE
+  attr(JdEvaluator, 'needsDataToBeContinuous') <- FALSE
   
   return(JdEvaluator)
 }

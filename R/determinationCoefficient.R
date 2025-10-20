@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features

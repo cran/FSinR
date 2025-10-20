@@ -22,14 +22,14 @@ Returns a search function that is used to guide the feature selection process.
 Generates a search function based on the hill climbing method. This function is called internally within the \code{\link{searchAlgorithm}} function. The Hill-Climbing \insertCite{Russell2009}{FSinR} method starts with a certain set of features and in each iteration it searches among its neighbors to advance towards a better solution. The method ends as soon as no better solutions are found.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a search process in a feature space
 ## Classification problem
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the search function with Hill-Climbing
 hc_search <- hillClimbing()

@@ -16,14 +16,14 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function with sfs
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function
 #' sfs_search <- sequentialForwardSelection()
@@ -31,7 +31,7 @@
 #' sfs_search(iris, 'Species', filter_evaluator)
 #' }
 sequentialForwardSelection <- function(stopCriterion=-1, stop=FALSE) {
-
+  
   sequentialForwardSelectionSearch <- function(data, class, featureSetEval) {
     
     if (attr(featureSetEval, 'kind') == "Individual measure") {
@@ -143,13 +143,14 @@ sequentialForwardSelection <- function(stopCriterion=-1, stop=FALSE) {
   }
   attr(sequentialForwardSelectionSearch,'shortName') <- "sfs"
   attr(sequentialForwardSelectionSearch,'name') <- "Sequential Forward Selection"
-    
+  
   return(sequentialForwardSelectionSearch)
 }
 
 
 #' @author Adan M. Rodriguez
 #' @author Francisco Aragón Royón
+#' @author Alfonso Jiménez Vílchez
 #' @title Sequential Floating Forward Selection
 #' @description Generates a search function based on sequential floating forward selection. This function is called internally within the \code{\link{searchAlgorithm}} function. The sffs method \insertCite{Pudil1994}{FSinR} starts with an empty set of features and add a single feature at each step with a view to improving the evaluation of the set. In addition, it checks whether removing any of the included features, improve the value of the set.
 #'
@@ -161,14 +162,14 @@ sequentialForwardSelection <- function(stopCriterion=-1, stop=FALSE) {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function with sffs
 #' sffs_search <- sequentialFloatingForwardSelection()
@@ -241,7 +242,7 @@ sequentialFloatingForwardSelection <- function(){
       
       # If including the new feature, we have a better set of features, we include it
       if(max){ # Classification -> maximize
-        best <- best.feat.value > value.max
+        best <- (best.feat.value > value.max) || (best.feat.value == value.max && value.max == 0) # Pick at least one feature
       }else{ # Regression -> minimize
         best <- best.feat.value < value.max
       }
@@ -266,7 +267,7 @@ sequentialFloatingForwardSelection <- function(){
               
               # Check if removing the feature, we get a better or even evaluation
               if(max){ # Classification -> maximize
-                best.critic <- crit.func.eval >= crit.func.max
+                best.critic <- crit.func.eval >= crit.func.max && crit.func.eval > 0 # Require score to be positive
               }else{ # Regression -> minimize
                 best.critic <- crit.func.eval <= crit.func.max
               }
@@ -281,7 +282,7 @@ sequentialFloatingForwardSelection <- function(){
               }
             }
             # Remove the feature 
-            if (worst.feat.value == TRUE) {
+            if (worst.feat.value == TRUE & length(feat.sub) > 1) { # Maintain at least one feature
               feat.sub <- feat.sub[feat.sub != worst.feat]
               features[length(features) + 1] <- worst.feat
             } else {
@@ -328,14 +329,14 @@ sequentialFloatingForwardSelection <- function(){
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function with sbs
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function
 #' sbs_search <- sequentialBackwardSelection()
@@ -343,7 +344,7 @@ sequentialFloatingForwardSelection <- function(){
 #' sbs_search(iris, 'Species', filter_evaluator)
 #' }
 sequentialBackwardSelection <- function(stopCriterion=-1, stop=FALSE) {
-
+  
   sequentialBackwardSelectionSearch <- function(data, class, featureSetEval){
     if (attr(featureSetEval, 'kind') == "Individual measure") {
       stop('Only feature set measures can be used');
@@ -432,7 +433,7 @@ sequentialBackwardSelection <- function(stopCriterion=-1, stop=FALSE) {
     
     res
   }
-    
+  
   attr(sequentialBackwardSelectionSearch,'shortName') <- "sbs"
   attr(sequentialBackwardSelectionSearch,'name') <- "Sequential Backward Selection"
   
@@ -452,14 +453,14 @@ sequentialBackwardSelection <- function(stopCriterion=-1, stop=FALSE) {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function with sfbs
 #' sfbs_search <- sequentialFloatingBackwardSelection()
@@ -588,7 +589,7 @@ sequentialFloatingBackwardSelection <- function(){
   }
   attr(sequentialFloatingBackwardSelectionSearch,'shortName') <- "sfbs"
   attr(sequentialFloatingBackwardSelectionSearch,'name') <- "Sequential Floating Backward Selection"
-
+  
   return(sequentialFloatingBackwardSelectionSearch)
 }
 

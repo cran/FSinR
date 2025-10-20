@@ -16,7 +16,7 @@ Returns a hybrid search function that is used to guide the feature selection pro
 Generates a hybrid search function based on Linear Consistency-Constrained algorithm described in \insertCite{ShinXu2009}{FSinR}. The algorithm combines two evaluation measures, the first evaluates each feature individually, and the second measure evaluate feature sets.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a hybrid search process in a feature space

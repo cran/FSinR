@@ -12,14 +12,14 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function with Breadth first
 #' bfs_search <- breadthFirst()
@@ -123,14 +123,14 @@ breadthFirst <- function() {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function with Deep first
 #' dfs_search <- deepFirst()

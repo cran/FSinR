@@ -22,14 +22,14 @@ capture.output(library(GA))
 #' @importFrom utils capture.output
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function with Genetic algorithm
 #' ga_search <- geneticAlgorithm()
@@ -158,14 +158,14 @@ geneticAlgorithm <- function(popSize=20, pcrossover = 0.8, pmutation = 0.1, maxi
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function with Simulated annealing
 #' sa_search <- simulatedAnnealing()
@@ -398,14 +398,14 @@ simulatedAnnealing <- function(start=NULL, temperature=1, temperature_min=0.01, 
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function with WOA
 #' woa_search <- whaleOptimization()
@@ -647,14 +647,14 @@ whaleOptimization <- function(population=10, iter=10, verbose = FALSE) {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function with ACO
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function
 #' aco_search <- antColony()

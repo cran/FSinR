@@ -29,7 +29,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## Examples of a search algorithm generation
 #'
@@ -50,7 +50,7 @@
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function
 #' search_method <- searchAlgorithm('hillClimbing')

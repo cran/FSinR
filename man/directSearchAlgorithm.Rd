@@ -26,7 +26,7 @@ Returns a direct search function that is used in the feature selection process.
 Generates a direct search function. This function in combination with the evaluator composes the feature selection process. Specifically, the result of calling this function is another function that is passed on as a parameter to the \code{\link{directFeatureSelection}} function. However, you can run this function directly to perform a direct search process.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## Examples of a direct search algorithm generation
 
@@ -48,7 +48,7 @@ direct_search_method_3 <- directSearchAlgorithm('selectThreshold', list(threshol
 
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the direct search function
 direct_search_method <- directSearchAlgorithm('selectKBest')

@@ -16,7 +16,7 @@ Returns a direct search function that is used in the feature selection process.
 Generates a direct search function that takes the 'k' features with the greatest evaluations (The features evaluation is individual). This function is called internally within the \code{\link{directSearchAlgorithm}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a direct search process
@@ -24,7 +24,7 @@ Generates a direct search function that takes the 'k' features with the greatest
 
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the direct search function with k-best
 skb_direct_search <- selectKBest()

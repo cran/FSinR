@@ -22,7 +22,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## Examples of a direct search algorithm generation
 #'
@@ -44,7 +44,7 @@
 #' 
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the direct search function
 #' direct_search_method <- directSearchAlgorithm('selectKBest')

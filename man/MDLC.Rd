@@ -13,19 +13,16 @@ Returns a function that is used to generate an evaluation set measure using MDLC
 Generates an evaluation function that applies the Minimum-Description_Length-Criterion (MDLC) \insertCite{Sheinvald1990}{FSinR} to generate an evaluation measure for a set of features (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly to evaluate a set of features
 ## Classification problem
 
-# A discrete dataset is used (in this case we use only several discrete columns)
-adult <- adult[,c(4,9,10,15)]
-
-# Generate the evaluation function with MDLC
+# Generate the evaluation function with Binary Consistency
 MDLC_evaluator <- MDLC()
 # Evaluate the features (parameters: dataset, target variable and features)
-MDLC_evaluator(adult,'income',c('race','sex','education'))
+MDLC_evaluator(iris, "Species", c("Sepal.Length","Sepal.Width"))
 }
 }
 \references{

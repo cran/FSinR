@@ -34,7 +34,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## Examples of the hybrid feature selection process
 #' ## Classification problem with filter

@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## Examples of a hybrid search algorithm generation
 #'

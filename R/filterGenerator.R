@@ -32,7 +32,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## Examples of a filter evaluator generation
 #' 
@@ -108,6 +108,9 @@ filterEvaluator <- function(filter, params=list()){
          },
          'ReliefFeatureSetMeasure'={
            do.call(ReliefFeatureSetMeasure,params)
+         },
+         'normalizedReliefFeatureSetMeasure'={
+           do.call(normalizedReliefFeatureSetMeasure,params)
          },
          'symmetricalUncertain'={
            do.call(symmetricalUncertain,params)

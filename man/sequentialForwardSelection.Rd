@@ -18,14 +18,14 @@ Returns a search function that is used to guide the feature selection process.
 Generates a search function based on sequential forward selection. This function is called internally within the \code{\link{searchAlgorithm}} function. The SFS method \insertCite{Whitney1971}{FSinR} starts with an empty set of features and add a single feature at each step with a view to improving the evaluation of the set.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a search process in a feature space
 ## Classification problem
 
 # Generates the filter evaluation function with sfs
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the search function
 sfs_search <- sequentialForwardSelection()

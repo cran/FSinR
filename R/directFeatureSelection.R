@@ -30,7 +30,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## Examples of the direct feature selection process
 #' ## Classification problem with filter

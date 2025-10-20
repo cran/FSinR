@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{ 
+#' \donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a direct search process
@@ -20,7 +20,7 @@
 #' 
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the direct search function with k-best
 #' skb_direct_search <- selectKBest()
@@ -108,7 +108,7 @@ selectKBest <- function(k=1) {
 #' @export
 #'
 #' @examples
-#' \dontrun{ 
+#' \donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a direct search process
@@ -116,7 +116,7 @@ selectKBest <- function(k=1) {
 #' 
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the direct search function with percentile
 #' sp_direct_search <- selectPercentile()
@@ -206,7 +206,7 @@ selectPercentile <- function(percentile=80) {
 #' @export
 #'
 #' @examples
-#' \dontrun{ 
+#' \donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a direct search process
@@ -214,7 +214,7 @@ selectPercentile <- function(percentile=80) {
 #' 
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the direct search function with threshold
 #' st_direct_search <- selectThreshold()
@@ -328,7 +328,7 @@ selectThreshold <- function(threshold=0.1) {
 #' @export
 #'
 #' @examples
-#' \dontrun{ 
+#' \donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a direct search process
@@ -336,7 +336,7 @@ selectThreshold <- function(threshold=0.1) {
 #' 
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the direct search function with threshold range
 #' str_direct_search <- selectThresholdRange()
@@ -453,7 +453,7 @@ selectThresholdRange <- function(p.threshold=0.8) {
 #' @export
 #'
 #' @examples
-#' \dontrun{ 
+#' \donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a direct search process
@@ -461,7 +461,7 @@ selectThresholdRange <- function(p.threshold=0.8) {
 #' 
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the direct search function with difference
 #' sd_direct_search <- selectDifference()
@@ -607,7 +607,7 @@ selectDifference <- function(d.threshold=0.2) {
 #' @export
 #'
 #' @examples
-#' \dontrun{ 
+#' \donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a direct search process
@@ -615,7 +615,7 @@ selectDifference <- function(d.threshold=0.2) {
 #' 
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the direct search function with slope
 #' ss_direct_search <- selectSlope()

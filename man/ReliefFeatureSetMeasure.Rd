@@ -18,7 +18,7 @@ Returns a function that is used to generate an evaluation set measure (between -
 Generates an evaluation function that applies Feature set measure based on Relief (set measure). Described in \insertCite{Arauzo2004}{FSinR}. This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly to evaluate a set of features

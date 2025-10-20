@@ -13,19 +13,21 @@ Returns a function that is used to generate an evaluation set measure using the 
 Generates an evaluation function that calculates the gain ratio value \insertCite{Quinlan1986}{FSinR}, using the information theory (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly to evaluate a set of features
 ## Classification problem
+data("Titanic")
+titanic <- as.data.frame(Titanic)
 
 # A discrete dataset is used (in this case we use only several discrete columns)
-adult <- adult[,c(4,9,10,15)]
+titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
 
-# Generate the evaluation function with Cramer
+# Generate the evaluation function with Gain Ratio
 gr_evaluator <- gainRatio()
 # Evaluate the features (parameters: dataset, target variable and features)
-gr_evaluator(adult,'income',c('race','sex','education'))
+gr_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 }
 }
 \references{

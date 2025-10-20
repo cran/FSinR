@@ -20,7 +20,7 @@ library(caret)
 #' @importFrom stats as.formula
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## Examples of a wrapper evaluator generation
 #'

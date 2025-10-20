@@ -9,19 +9,22 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features
 #' ## Classification problem
 #' 
-#' # A discrete dataset is used (in this case we use only several discrete columns)
-#' adult <- adult[,c(4,9,10,15)]
+#' data("Titanic")
+#' titanic <- as.data.frame(Titanic)
 #' 
-#' # Generate the evaluation function with Gini index
+#' # A discrete dataset is used (in this case we use only several discrete columns)
+#' titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
+#' 
+#' # Generate the evaluation function with Gini Index
 #' giniIndex_evaluator <- giniIndex()
 #' # Evaluate the features (parameters: dataset, target variable and features)
-#' giniIndex_evaluator(adult,'income',c('race','sex','education'))
+#' giniIndex_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 #' }
 giniIndex <- function() {
   

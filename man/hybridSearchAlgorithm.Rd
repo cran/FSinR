@@ -21,7 +21,7 @@ Returns a hybrid search function that is used to guide the feature selection pro
 Generates a hybrid search function. This function in combination with the evaluator guides the feature selection process. Specifically, the result of calling this function is another function that is passed on as a parameter to the \code{\link{featureSelection}} function. However, you can run this function directly to perform a search process in the features space.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## Examples of a hybrid search algorithm generation
 

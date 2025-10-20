@@ -13,7 +13,7 @@ Returns a function that is used to generate an individual evaluation measure usi
 Generates an evaluation function that calculates the Chi squared value \insertCite{Pearson1900}{FSinR}, evaluating the selected features individually (individual measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly to individually evaluate a set of features

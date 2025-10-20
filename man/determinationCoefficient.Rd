@@ -13,7 +13,7 @@ Returns a function that is used to generate an evaluation set measure using the 
 Generates an evaluation function that calculates the determinantion coefficient \insertCite{rsquared}{FSinR} of continuous features (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly to evaluate a set of features

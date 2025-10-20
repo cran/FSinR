@@ -18,7 +18,7 @@ Returns a direct search function that is used in the feature selection process.
 Generates a direct search function that selects the features whose evaluation is over/under a user given threshold (It depends on the method that generates the evaluation measure. For example: under for regression methods, over for classification methods, etc.)(The features evaluation is individual). Features that do not satisfy the threshold, will be removed. This function is called internally within the \code{\link{directSearchAlgorithm}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a direct search process
@@ -26,7 +26,7 @@ Generates a direct search function that selects the features whose evaluation is
 
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the direct search function with threshold
 st_direct_search <- selectThreshold()

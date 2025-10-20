@@ -13,19 +13,22 @@ Returns a function that is used to generate an evaluation set measure using the 
 Generates an evaluation function that calculates the rough sets consistency value \insertCite{Pawlak1982}{FSinR} \insertCite{Pawlak1991}{FSinR}, using hash tables (set measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly to evaluate a set of features
 ## Classification problem
 
+data("Titanic")
+titanic <- as.data.frame(Titanic)
+
 # A discrete dataset is used (in this case we use only several discrete columns)
-adult <- adult[,c(4,9,10,15)]
+titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
 
 # Generate the evaluation function with Rough Set Consistency
 rsc_evaluator <- roughsetConsistency()
 # Evaluate the features (parameters: dataset, target variable and features)
-rsc_evaluator(adult,'income',c('race','sex','education'))
+rsc_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 }
 }
 \references{

@@ -23,7 +23,7 @@ Generates a wrapper function to be used as an evaluator \insertCite{kohavi1997}{
 generaWrapper
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## Examples of a wrapper evaluator generation
 

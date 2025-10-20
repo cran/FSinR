@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to individually evaluate a set of features
@@ -40,14 +40,14 @@ fscore <- function() {
       
       x_plus  <- data %>%
         filter(UQ(as.name(class)) == feature.classes[1,1]) %>%
-        select(feature) %>%
+        select(all_of(feature)) %>%
         as.matrix()
       x_plus.mean = mean(x_plus)
       x_plus.n = nrow(x_plus)
       
       x_minus  <- data %>%
         filter(UQ(as.name(class)) == feature.classes[2,1]) %>%
-        select(feature) %>%
+        select(all_of(feature)) %>%
         as.matrix()
       x_minus.mean = mean(x_minus)
       x_minus.n = nrow(x_minus)

@@ -35,19 +35,21 @@ entropyJ <- function(x) {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features
 #' ## Classification problem
+#' data("Titanic")
+#' titanic <- as.data.frame(Titanic)
 #' 
 #' # A discrete dataset is used (in this case we use only several discrete columns)
-#' adult <- adult[,c(4,9,10,15)]
+#' titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
 #' 
-#' # Generate the evaluation function with Cramer
+#' # Generate the evaluation function with Mutual Information
 #' mi_evaluator <- mutualInformation()
 #' # Evaluate the features (parameters: dataset, target variable and features)
-#' mi_evaluator(adult,'income',c('race','sex','education'))
+#' mi_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 #' }
 mutualInformation <- function() {
   
@@ -111,19 +113,21 @@ mutualInformation <- function() {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features
 #' ## Classification problem
+#' data("Titanic")
+#' titanic <- as.data.frame(Titanic)
 #' 
 #' # A discrete dataset is used (in this case we use only several discrete columns)
-#' adult <- adult[,c(4,9,10,15)]
+#' titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
 #' 
-#' # Generate the evaluation function with Cramer
+#' # Generate the evaluation function with Gain Ratio
 #' gr_evaluator <- gainRatio()
 #' # Evaluate the features (parameters: dataset, target variable and features)
-#' gr_evaluator(adult,'income',c('race','sex','education'))
+#' gr_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 #' }
 gainRatio <- function() {
   
@@ -176,19 +180,21 @@ gainRatio <- function() {
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features
 #' ## Classification problem
+#' data("Titanic")
+#' titanic <- as.data.frame(Titanic)
 #' 
 #' # A discrete dataset is used (in this case we use only several discrete columns)
-#' adult <- adult[,c(4,9,10,15)]
+#' titanic_subset <- titanic[, c("Class", "Sex", "Age", "Survived")]
 #' 
 #' # Generate the evaluation function with Symmetrical Uncertain
 #' su_evaluator <- symmetricalUncertain()
 #' # Evaluate the features (parameters: dataset, target variable and features)
-#' su_evaluator(adult,'income',c('race','sex','education'))
+#' su_evaluator(titanic_subset, "Survived", c("Class", "Sex", "Age"))
 #' }
 symmetricalUncertain <- function() {
   

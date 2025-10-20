@@ -13,7 +13,7 @@ Returns a function that is used to generate an individual evaluation measure usi
 Generates an evaluation function that calculates the F-score approach defined in \insertCite{Wang2018}{FSinR} (individual measure). This function is called internally within the \code{\link{filterEvaluator}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly to individually evaluate a set of features

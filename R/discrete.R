@@ -24,6 +24,17 @@ allElementsAreStrings <- function(collection) {
   return(all(is.character(collection)))
 }
 
+#' @author Alfonso Jiménez Vílchez
+#' @title is.discrete(collection)
+#' @description Estimate if a collection contains discrete values
+#' @param collection - A collection of values
+#'
+#' @return - True if the collecion is discrete, False otherwise
+#' @export
+#'
+#' @examples
+#' is.discrete(mtcars$gear)
+#' is.discrete(iris$Sepal.Length)
 is.discrete <- function(collection) {
   if (is.factor(collection)) {
     return(TRUE)

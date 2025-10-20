@@ -54,14 +54,14 @@ Returns a search function that is used to guide the feature selection process.
 Generates a search function based on the tabu search. This function is called internally within the \code{\link{searchAlgorithm}} function. The Tabu Search\insertCite{glover1986}{FSinR} \insertCite{glover1990}{FSinR} method starts with a certain set of features and in each iteration it searches among its neighbors to advance towards a better solution. The method has a memory (tabu list) that prevents returning to recently visited neighbors. The method ends when a certain number of iterations are performed, or when a certain number of iterations are performed without improvement, or when there are no possible neighbors. Once the method is finished, an intensification phase can be carried out that begins in the space of the best solutions found, or a diversification phase can be carried out in which solutions not previously visited are explored.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a search process in a feature space
 ## Classification problem
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the search function wit Tabu search
 ts_search <- tabu()

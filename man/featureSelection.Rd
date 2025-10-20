@@ -35,7 +35,7 @@ A list is returned with the results of the feature selection process:
 Performs the feature selection process. Given a search algorithm and an evaluation method, it uses the search algorithm in combination with the evaluation results to guide the feature selection process to an optimal subset.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## Examples of the feature selection process
 ## Classification problem with filter

@@ -33,7 +33,7 @@ Returns a search function that is used to guide the feature selection process
 Generates a search function. This function in combination with the evaluator guides the feature selection process. Specifically, the result of calling this function is another function that is passed on as a parameter to the \code{\link{featureSelection}} function. However, you can run this function directly to perform a search process in the features space.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## Examples of a search algorithm generation
 
@@ -54,7 +54,7 @@ search_method_3 <- searchAlgorithm('tabu', list(intensification=1, iterIntensifi
 ## Classification problem
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the search function
 search_method <- searchAlgorithm('hillClimbing')

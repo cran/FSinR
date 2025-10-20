@@ -20,14 +20,14 @@ Returns a search function that is used to guide the feature selection process.
 Generates a search function based on the whale optimization algorithm. This function is called internally within the \code{\link{searchAlgorithm}} function. Binary Whale Optimization Algorithm \insertCite{Kumar2018}{FSinR} is an algorithm that simulates the social behavior of humpback whales. This algorithm employs a binary version of the bubble-net hunting strategy. The algorithm starts with an initial population of individuals, and in each iteration updates the individuals according to several possible actions: Encircling prey, Bubble-net attacking or Search for prey
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a search process in a feature space
 ## Classification problem
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the search function with WOA
 woa_search <- whaleOptimization()

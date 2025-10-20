@@ -20,17 +20,18 @@ Returns a search function that is used to guide the feature selection process.
 Generates a search function based on Las Vegas algorithm. This function is called internally within the \code{\link{searchAlgorithm}} function. The LasVegas method  \insertCite{LiuSetiono1996}{FSinR} starts with a certain set of features and in each step a new set is randomly generated, if the new set is better it is saved as the best solution. The algorithm ends when there are no improvements in a certain number of iterations.
 }
 \examples{
-\dontrun{ 
-
+\donttest{
 ## The direct application of this function is an advanced use that consists of using this 
-# function directly and performing a search process in a feature space
+# function directly and performing a search process in a feature space 
+
 ## Classification problem
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the search function with Las Vegas
 LV_search <- LasVegas()
+
 # Performs the search process directly (parameters: dataset, target variable and evaluator)
 LV_search(iris, 'Species', filter_evaluator)
 }

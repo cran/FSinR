@@ -63,7 +63,7 @@ selectKNeighbours <- function(data, S, examples, example, k, penalization = FALS
 #' @import dplyr
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features
@@ -154,7 +154,7 @@ ReliefFeatureSetMeasure <- function(iterations = 5, kNeightbours = 4) {
 #' @import dplyr
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly to evaluate a set of features

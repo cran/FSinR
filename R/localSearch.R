@@ -17,14 +17,14 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function with Hill-Climbing
 #' hc_search <- hillClimbing()
@@ -425,14 +425,14 @@ hillClimbing <- function(start=NULL, nneigh=NULL, repeats=1, verbose=FALSE){
 #' @export
 #'
 #' @examples
-#'\dontrun{ 
+#'\donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a search process in a feature space
 #' ## Classification problem
 #' 
 #' # Generates the filter evaluation function
-#' filter_evaluator <- filterEvaluator('determinationCoefficient')
+#' filter_evaluator <- filterEvaluator('IEConsistency')
 #' 
 #' # Generates the search function wit Tabu search
 #' ts_search <- tabu()

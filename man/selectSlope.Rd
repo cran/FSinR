@@ -18,7 +18,7 @@ Returns a direct search function that is used in the feature selection process.
 Generates a direct search function that selects features (in descending order from the best evaluation measure to the lowest) until the slope to the next feature is over a threshold (The features evaluation is individual). The slope is calculated as: (s.threshold) / (number of features). This function is called internally within the \code{\link{directSearchAlgorithm}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a direct search process
@@ -26,7 +26,7 @@ Generates a direct search function that selects features (in descending order fr
 
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the direct search function with slope
 ss_direct_search <- selectSlope()

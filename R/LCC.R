@@ -33,7 +33,7 @@ orderFeatures <- function(data, class, features, measure) {
 #' @export
 #'
 #' @examples
-#' \dontrun{ 
+#' \donttest{ 
 #'
 #' ## The direct application of this function is an advanced use that consists of using this 
 #' # function directly and performing a hybrid search process in a feature space

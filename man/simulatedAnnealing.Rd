@@ -33,14 +33,14 @@ Returns a search function that is used to guide the feature selection process.
 Generates a search function based on simulated annealing. This function is called internally within the \code{\link{searchAlgorithm}} function. The simulatedAnnealing method \insertCite{KirkpatrickGelattVecchi1983}{FSinR} starts with a certain set of features and in each iteration modifies an element of the previous feature vector and decreases the temperature. If the energy of the new feature vector is better than that of the old vector, it is accepted and moved towards it, otherwise it is moved towards the new vector according to an acceptance probability.  The algorithm ends when the minimum temperature has been reached. Additionally, a number of internal iterations can be performed within each iteration of the algorithm. In this case, the same temperature value of the outer iteration is used for the inner iterations
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a search process in a feature space
 ## Classification problem
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the search function with Simulated annealing
 sa_search <- simulatedAnnealing()

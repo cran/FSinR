@@ -16,7 +16,7 @@ Returns a direct search function that is used in the feature selection process.
 Generates a direct search function that selects a fraction, given as a percentage, of the total number of available features (The features evaluation is individual). This function is called internally within the \code{\link{directSearchAlgorithm}} function.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a direct search process
@@ -24,7 +24,7 @@ Generates a direct search function that selects a fraction, given as a percentag
 
 
 # Generates the filter evaluation function
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the direct search function with percentile
 sp_direct_search <- selectPercentile()

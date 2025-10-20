@@ -18,14 +18,14 @@ Returns a search function that is used to guide the feature selection process.
 Generates a search function based on sequential backward selection. This function is called internally within the \code{\link{searchAlgorithm}} function. The SBS method \insertCite{MarillGreen1963}{FSinR} starts with all the features and removes a single feature at each step with a view to improving the evaluation of the set.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## The direct application of this function is an advanced use that consists of using this 
 # function directly and performing a search process in a feature space
 ## Classification problem
 
 # Generates the filter evaluation function with sbs
-filter_evaluator <- filterEvaluator('determinationCoefficient')
+filter_evaluator <- filterEvaluator('IEConsistency')
 
 # Generates the search function
 sbs_search <- sequentialBackwardSelection()

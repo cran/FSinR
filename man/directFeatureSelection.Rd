@@ -35,7 +35,7 @@ A list is returned with the results of the direct feature selection process:
 Performs the direct feature selection process. Given a direct search algorithm and an evaluation method, it uses the direct search algorithm in combination with the evaluation results to guide the feature selection process to an optimal subset.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## Examples of the direct feature selection process
 ## Classification problem with filter

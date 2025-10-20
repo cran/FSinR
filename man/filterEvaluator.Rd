@@ -37,7 +37,7 @@ Returns a filter method that is used to generate an evaluation measure.
 Generates a filter function to be used as an evaluator in the feature selection proccess. More specifically, the result of calling this function is another function that is passed on as a parameter to the \code{\link{featureSelection}} function. However, you can also run this function directly to generate an evaluation measure.
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 
 ## Examples of a filter evaluator generation
 
