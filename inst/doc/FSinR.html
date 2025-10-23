@@ -12,7 +12,7 @@
 
 <meta name="author" content="Francisco Aragón Royón" />
 
-<meta name="date" content="2025-10-15" />
+<meta name="date" content="2025-10-23" />
 
 <title>A Short Introduction to the FSinR Package</title>
 
@@ -342,7 +342,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1 class="title toc-ignore">A Short Introduction to the FSinR
 Package</h1>
 <h4 class="author">Francisco Aragón Royón</h4>
-<h4 class="date">2025-10-15</h4>
+<h4 class="date">2025-10-23</h4>
 
 
 
@@ -514,7 +514,7 @@ evaluation.</p>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co">#&gt;      Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#&gt; [1,]            0           1            1           1</span></span>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>results<span class="sc">$</span>bestValue</span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt; [1] 0.9645521</span></span></code></pre></div>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt; [1] 0.9624873</span></span></code></pre></div>
 <p>The above example illustrates a simple use of the package, but this
 can also be more complex if you intend to establish certain parameters.
 Regarding the wrapper method, it is possible to tune the model
@@ -598,7 +598,7 @@ features to be evaluated.</p>
 <span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a></span>
 <span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>resultWrapper <span class="ot">&lt;-</span> <span class="fu">wrapper_evaluator</span>(iris, <span class="st">&#39;Species&#39;</span>, <span class="fu">c</span>(<span class="st">&quot;Petal.Length&quot;</span>, <span class="st">&quot;Petal.Width&quot;</span>))</span>
 <span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>resultWrapper</span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; [1] 0.9600169</span></span></code></pre></div>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; [1] 0.964947</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -734,7 +734,7 @@ evaluator (set evaluation method)</p>
 <span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="co">#&gt;      cyl disp hp drat wt qsec vs am gear carb</span></span>
 <span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a><span class="co">#&gt; [1,]   1    1  1    1  1    1  1  1    1    1</span></span>
 <span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a>results<span class="sc">$</span>bestValue</span>
-<span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a><span class="co">#&gt; [1] -0.01607143</span></span></code></pre></div>
+<span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a><span class="co">#&gt; [1] -0.09174107</span></span></code></pre></div>
 </div>
 </div>
 

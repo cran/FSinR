@@ -12,7 +12,7 @@
 
 <meta name="author" content="Alfonso Jiménez Vílchez" />
 
-<meta name="date" content="2025-10-15" />
+<meta name="date" content="2025-10-23" />
 
 <title>Evaluation and algorithms combination</title>
 
@@ -341,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Evaluation and algorithms combination</h1>
 <h4 class="author">Alfonso Jiménez Vílchez</h4>
-<h4 class="date">2025-10-15</h4>
+<h4 class="date">2025-10-23</h4>
 
 
 
@@ -666,7 +666,7 @@ measures:</p>
 <span id="cb3-173"><a href="#cb3-173" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Algorithm:  Las Vegas&quot;</span></span>
 <span id="cb3-174"><a href="#cb3-174" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Evaluation measure:  Inconsistent Examples Consistency&quot;</span></span>
 <span id="cb3-175"><a href="#cb3-175" tabindex="-1"></a><span class="co">#&gt;      Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
-<span id="cb3-176"><a href="#cb3-176" tabindex="-1"></a><span class="co">#&gt; [1,]            0           1            1           1</span></span>
+<span id="cb3-176"><a href="#cb3-176" tabindex="-1"></a><span class="co">#&gt; [1,]            1           0            1           1</span></span>
 <span id="cb3-177"><a href="#cb3-177" tabindex="-1"></a><span class="co">#&gt; Warning in featureSetEval(data, class, features[which(start == 1)]): The data</span></span>
 <span id="cb3-178"><a href="#cb3-178" tabindex="-1"></a><span class="co">#&gt; seems not to be discrete, as it should be</span></span>
 <span id="cb3-179"><a href="#cb3-179" tabindex="-1"></a><span class="co">#&gt; Warning in featureSetEval(data, class, features[which(start == 1)]): The data</span></span>
@@ -769,10 +769,18 @@ measures:</p>
 <span id="cb3-276"><a href="#cb3-276" tabindex="-1"></a><span class="co">#&gt; seems not to be discrete, as it should be</span></span>
 <span id="cb3-277"><a href="#cb3-277" tabindex="-1"></a><span class="co">#&gt; Warning in featureSetEval(data, class, features[which(start == 1)]): The data</span></span>
 <span id="cb3-278"><a href="#cb3-278" tabindex="-1"></a><span class="co">#&gt; seems not to be discrete, as it should be</span></span>
-<span id="cb3-279"><a href="#cb3-279" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Algorithm:  Las Vegas&quot;</span></span>
-<span id="cb3-280"><a href="#cb3-280" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Evaluation measure:  Mutual Information&quot;</span></span>
-<span id="cb3-281"><a href="#cb3-281" tabindex="-1"></a><span class="co">#&gt;      Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
-<span id="cb3-282"><a href="#cb3-282" tabindex="-1"></a><span class="co">#&gt; [1,]            0           1            1           1</span></span></code></pre></div>
+<span id="cb3-279"><a href="#cb3-279" tabindex="-1"></a><span class="co">#&gt; Warning in featureSetEval(data, class, features[which(start == 1)]): The data</span></span>
+<span id="cb3-280"><a href="#cb3-280" tabindex="-1"></a><span class="co">#&gt; seems not to be discrete, as it should be</span></span>
+<span id="cb3-281"><a href="#cb3-281" tabindex="-1"></a><span class="co">#&gt; Warning in featureSetEval(data, class, features[which(start == 1)]): The data</span></span>
+<span id="cb3-282"><a href="#cb3-282" tabindex="-1"></a><span class="co">#&gt; seems not to be discrete, as it should be</span></span>
+<span id="cb3-283"><a href="#cb3-283" tabindex="-1"></a><span class="co">#&gt; Warning in featureSetEval(data, class, features[which(start == 1)]): The data</span></span>
+<span id="cb3-284"><a href="#cb3-284" tabindex="-1"></a><span class="co">#&gt; seems not to be discrete, as it should be</span></span>
+<span id="cb3-285"><a href="#cb3-285" tabindex="-1"></a><span class="co">#&gt; Warning in featureSetEval(data, class, features[which(start == 1)]): The data</span></span>
+<span id="cb3-286"><a href="#cb3-286" tabindex="-1"></a><span class="co">#&gt; seems not to be discrete, as it should be</span></span>
+<span id="cb3-287"><a href="#cb3-287" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Algorithm:  Las Vegas&quot;</span></span>
+<span id="cb3-288"><a href="#cb3-288" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Evaluation measure:  Mutual Information&quot;</span></span>
+<span id="cb3-289"><a href="#cb3-289" tabindex="-1"></a><span class="co">#&gt;      Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span id="cb3-290"><a href="#cb3-290" tabindex="-1"></a><span class="co">#&gt; [1,]            0           1            1           1</span></span></code></pre></div>
 <p>Wrapper evaluation measures can also be combined. In the example a
 knn model is used, since the iris problem is a classification problem.
 The FSinR package is able to detect automatically depending on the

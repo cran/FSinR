@@ -1,8 +1,11 @@
-FSinR v2.0.7 (Release date: 2025-10-08)
-==============
+FSinR 2.0.9
 
-(Kept you waiting, huh?)
+* Added ORCIDs to package authors description
 
-Changes:
+FSinR 2.0.8
 
-* Package updated to comply with CRAN current requirements.
+* Fixed bugs in demos
+
+FSinR 2.0.7
+
+* Outdated package updated to comply with CRAN current requirements

@@ -2,16 +2,16 @@ Package: FSinR
 Maintainer: Alfonso Jiménez-Vílchez <i52jivia@uco.es>
 Language: en-US
 Type: Package
-Title: Feature Selection
+Title: Feature Selection in R
 Description: Feature subset selection algorithms modularized in search algorithms and measure utilities.
-Version: 2.0.8
-Date: 2025-10-08
+Version: 2.0.9
+Date: 2025-10-23
 Authors@R: c(
-    person("Alfonso",     "Jiménez-Vílchez", email = "i52jivia@uco.es", role = c("aut", "cre")),
-    person("Francisco",   "Aragón-Royón", email = "far@decsai.ugr.es", role = "aut"),
+    person("Alfonso",     "Jiménez-Vílchez", email = "i52jivia@uco.es", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-9800-8160")),
+    person("Francisco",   "Aragón-Royón", email = "far@decsai.ugr.es", role = "aut", comment = c(ORCID = "0000-0003-2025-5898")),
     person("Adan M.",     "Rodriguez", email = "i32muroa@gmail.com", role = "aut"),
-    person("Antonio",     "Arauzo-Azofra", email = "arauzo@uco.es", role = "aut"),
-    person("José Manuel", "Benítez", email = "J.M.Benitez@decsai.ugr.es", role = "aut"))
+    person("Antonio",     "Arauzo-Azofra", email = "arauzo@uco.es", role = "aut", comment = c(ORCID = "0000-0002-2486-5792")),
+    person("José Manuel", "Benítez", email = "J.M.Benitez@decsai.ugr.es", role = "aut", comment = c(ORCID = "0000-0002-2346-0793")))
 Repository: CRAN
 License: GPL-3
 Imports: digest, caret, Rdpack, GA, dplyr, tidyr, prodlim, rlang,
@@ -22,10 +22,14 @@ RoxygenNote: 7.3.3
 Suggests: testthat, knitr, rmarkdown, RSNNS, randomForest
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2025-10-14 23:24:32 UTC; alfonso
-Author: Alfonso Jiménez-Vílchez [aut, cre],
-  Francisco Aragón-Royón [aut],
+Packaged: 2025-10-23 15:01:26 UTC; alfonso
+Author: Alfonso Jiménez-Vílchez [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-9800-8160>),
+  Francisco Aragón-Royón [aut] (ORCID:
+    <https://orcid.org/0000-0003-2025-5898>),
   Adan M. Rodriguez [aut],
-  Antonio Arauzo-Azofra [aut],
-  José Manuel Benítez [aut]
-Date/Publication: 2025-10-20 19:20:13 UTC
+  Antonio Arauzo-Azofra [aut] (ORCID:
+    <https://orcid.org/0000-0002-2486-5792>),
+  José Manuel Benítez [aut] (ORCID:
+    <https://orcid.org/0000-0002-2346-0793>)
+Date/Publication: 2025-10-23 22:50:01 UTC

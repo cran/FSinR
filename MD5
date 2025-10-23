@@ -1,7 +1,7 @@
-d1b8ca2a79786cc932f0e14155d08a65 *DESCRIPTION
+29f24e44e8d49a47a393ec77e426b584 *DESCRIPTION
 da5781af6e98e70625f3e812a2906e57 *NAMESPACE
-27e096202a78e73a64169a371c0b57fc *NEWS
-8cb9e8b467c04f22e4348124745b8560 *NEWS.md
+1dd8a386122026c91352cbfd47c96e36 *NEWS
+af2bea27b1557d60c6b9486845b8daef *NEWS.md
 c4fcea8fc70087eb1b5a6f94cbd7160c *R/Jd.R
 61275b1d1db780a93cfcfe3eac10534d *R/LCC.R
 fb533e1333a5c7e8a962fd16e0a387f0 *R/RFSM.R
@@ -29,7 +29,7 @@ c2ce8cbb7e971eef4b73b6e99b7fd1e8 *R/probabilistic.R
 9b697c2583a55fba99793c7d242d9132 *R/selectIndividualFeatures.R
 4d3bfa79ddb6c8a9a13f437aa7dbc23d *R/sequentialSelection.R
 74ac8b19e2069c37632110c1dd77e71b *R/wrapperGenerator.R
-429107231aa1e9dadbd3b54988e6d2de *build/partial.rdb
+d323231288b8e49e96340af4fa7ef5ea *build/partial.rdb
 51412a507a069f558efaccee96ce306a *build/vignette.rds
 8693159a1bc3d53b8c8e25c009321faa *demo/00Index
 5b87068fcd949a8283d927cc9e9af7ed *demo/LCC.R
@@ -57,13 +57,13 @@ da7bac97ee696983abd3fce12a768cf7 *demo/woa.R
 f622fea90ea3db255bf915ba1a3f8b7f *demo/wrapperGenerator.R
 8dad2338c1786fdd030e8b99910848d5 *inst/CITATION
 34c6ee7f2e6d4871d7660aa239e5d5a5 *inst/FSinR.Rmd
-1da269d5a66977ca56e4d5954f32ff28 *inst/REFERENCES.bib
+65607587c11f9a616d863eb74eae7edd *inst/REFERENCES.bib
 143a4715dddd130a24b463f72d4e421f *inst/doc/FSinR.R
 55d369541269741ecae8677c01a37404 *inst/doc/FSinR.Rmd
-24d23608187296d9667f3468daa6ad7d *inst/doc/FSinR.html
+9ad3c7a47292c5fe9e62bfb167c49fa2 *inst/doc/FSinR.html
 6a6bba380fdac6cc6ef108508e4dba5d *inst/doc/methods.R
 cb5118c1bb58e73b2f0f6babf178ba86 *inst/doc/methods.Rmd
-224ec3525eba6733a1c61d509347648d *inst/doc/methods.html
+fae26e8242cf6cfb83cd1532bb5f51fe *inst/doc/methods.html
 b69134a669905cc4fdb558c8c52a4de6 *inst/methods.Rmd
 1868681ff3792f5f7290f6115cb516da *man/IEConsistency.Rd
 9c1e429525418f1a08c4e1a584f5ef00 *man/IEPConsistency.Rd
