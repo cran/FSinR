@@ -4,8 +4,8 @@ Language: en-US
 Type: Package
 Title: Feature Selection in R
 Description: Feature subset selection algorithms modularized in search algorithms and measure utilities.
-Version: 2.0.9
-Date: 2025-10-23
+Version: 2.0.10
+Date: 2025-11-12
 Authors@R: c(
     person("Alfonso",     "Jiménez-Vílchez", email = "i52jivia@uco.es", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-9800-8160")),
     person("Francisco",   "Aragón-Royón", email = "far@decsai.ugr.es", role = "aut", comment = c(ORCID = "0000-0003-2025-5898")),
@@ -22,7 +22,7 @@ RoxygenNote: 7.3.3
 Suggests: testthat, knitr, rmarkdown, RSNNS, randomForest
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2025-10-23 15:01:26 UTC; alfonso
+Packaged: 2025-11-12 00:23:50 UTC; alfonso
 Author: Alfonso Jiménez-Vílchez [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-9800-8160>),
   Francisco Aragón-Royón [aut] (ORCID:
@@ -32,4 +32,4 @@ Author: Alfonso Jiménez-Vílchez [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-2486-5792>),
   José Manuel Benítez [aut] (ORCID:
     <https://orcid.org/0000-0002-2346-0793>)
-Date/Publication: 2025-10-23 22:50:01 UTC
+Date/Publication: 2025-11-12 00:40:02 UTC

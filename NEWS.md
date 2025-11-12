@@ -1,3 +1,7 @@
+# FSinR 2.0.10
+
+* Fixed warning "prepare_Rd: Undefined bibtex string name: october"
+
 # FSinR 2.0.9
 
 * Added ORCIDs to package authors description
